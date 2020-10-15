@@ -1,0 +1,2 @@
+# StoklamaBandi
+Hortum Stoklama Bandı

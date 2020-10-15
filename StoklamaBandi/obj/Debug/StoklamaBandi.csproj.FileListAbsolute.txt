@@ -1,0 +1,9 @@
+C:\GitHub\StoklamaBandi\StoklamaBandi\bin\Debug\StoklamaBandi.exe.config
+C:\GitHub\StoklamaBandi\StoklamaBandi\bin\Debug\StoklamaBandi.exe
+C:\GitHub\StoklamaBandi\StoklamaBandi\bin\Debug\StoklamaBandi.pdb
+C:\GitHub\StoklamaBandi\StoklamaBandi\obj\Debug\StoklamaBandi.csprojAssemblyReference.cache
+C:\GitHub\StoklamaBandi\StoklamaBandi\obj\Debug\StoklamaBandi.Properties.Resources.resources
+C:\GitHub\StoklamaBandi\StoklamaBandi\obj\Debug\StoklamaBandi.csproj.GenerateResource.cache
+C:\GitHub\StoklamaBandi\StoklamaBandi\obj\Debug\StoklamaBandi.csproj.CoreCompileInputs.cache
+C:\GitHub\StoklamaBandi\StoklamaBandi\obj\Debug\StoklamaBandi.exe
+C:\GitHub\StoklamaBandi\StoklamaBandi\obj\Debug\StoklamaBandi.pdb

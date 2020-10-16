@@ -24,7 +24,7 @@ namespace StoklamaBandi.Manager
             //modbusClient.Baudrate = 9600;	// Not necessary since default baudrate = 9600
             //modbusClient.Parity = System.IO.Ports.Parity.None;
             //modbusClient.StopBits = System.IO.Ports.StopBits.Two;
-            //modbusClient.ConnectionTimeout = 500;			
+            modbusClient.ConnectionTimeout = 1000;			
 
             //Connect();
         }
@@ -49,29 +49,29 @@ namespace StoklamaBandi.Manager
 
         public int[] ReadSingleWord(int registerAdd)
         {
-            int[] mw = modbusClient.ReadHoldingRegisters(0 + registerAdd, 1);
+            int[] mw = modbusClient.ReadHoldingRegisters(40001 + registerAdd, 1);
             return mw;
         }
         public int[] ReadSingleInt(int registerAdd)
         {
-            int[] mi = modbusClient.ReadHoldingRegisters(1000 + registerAdd, 2);
+            int[] mi = modbusClient.ReadHoldingRegisters(41001 + registerAdd, 2);
             return mi;
         }
 
         //***Word değer yazdırma.
         public void WriteSingleWord(int registerAdd, int value)
         {
-            modbusClient.WriteSingleRegister(0 + registerAdd, value);
+            modbusClient.WriteSingleRegister(40001 + registerAdd, value);
         }
         //***Int değer yazdırma
         public void WriteSingleInt(int registerAdd, int value)
         {
-            modbusClient.WriteSingleRegister(1000 + registerAdd, value);
+            modbusClient.WriteSingleRegister(41001 + registerAdd, value);
         }
         //***Memory bit değeri gönderme.
         public void WriteCoilRegister(int registerAdd, bool bitValue)
         {
-            modbusClient.WriteSingleCoil(0 + registerAdd, bitValue);
+            modbusClient.WriteSingleCoil(00001 + registerAdd, bitValue);
           
         }
 

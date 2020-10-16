@@ -39,7 +39,12 @@ namespace StoklamaBandi
 
         private void CreateClient()
         {
-            ReadSetting();
+            ReadSetting();  //COM adresini dosyadan oku
+
+            if (!serialPort1.IsOpen)
+            {
+                serialPort1.Open();
+            }
 
             if (modbusManager == null)
             {
@@ -68,13 +73,6 @@ namespace StoklamaBandi
             }
         }
 
-        #region Thread Islemleri
-        private void CreateThread()
-        {
-            ThRead = new Thread(ThReadStart);
-            ThWrite = new Thread(ThWriteStart);
-        }
-
         #region Read Settings
         private string ReadSetting()
         {
@@ -95,6 +93,13 @@ namespace StoklamaBandi
             return _serialPort;
         }
         #endregion
+
+        #region Thread Islemleri
+        private void CreateThread()
+        {
+            ThRead = new Thread(ThReadStart);
+            ThWrite = new Thread(ThWriteStart);
+        }
 
         private void ThWriteStart()
         {

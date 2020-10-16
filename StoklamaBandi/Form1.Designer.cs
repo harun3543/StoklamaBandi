@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
@@ -41,6 +42,7 @@
             this.lblSayilanAdet = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
@@ -156,7 +158,7 @@
             // 
             this.lblSayilanAdet.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.lblSayilanAdet.Appearance.Options.UseFont = true;
-            this.lblSayilanAdet.Location = new System.Drawing.Point(111, 103);
+            this.lblSayilanAdet.Location = new System.Drawing.Point(111, 81);
             this.lblSayilanAdet.Name = "lblSayilanAdet";
             this.lblSayilanAdet.Size = new System.Drawing.Size(24, 16);
             this.lblSayilanAdet.TabIndex = 7;
@@ -166,7 +168,7 @@
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(5, 103);
+            this.labelControl2.Location = new System.Drawing.Point(5, 81);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(87, 16);
             this.labelControl2.TabIndex = 6;
@@ -224,6 +226,7 @@
         private DevExpress.XtraEditors.LabelControl lblSayilanAdet;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.GroupControl groupControl5;
+        private System.IO.Ports.SerialPort serialPort1;
     }
 }
 

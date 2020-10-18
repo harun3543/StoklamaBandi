@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace StoklamaBandi.EntityFramework.Context
 {
-    public class ProductContext : DbContext
+    public class MyContext : DbContext
     {
-        public ProductContext()
+        public MyContext()
         {
-            Database.SetInitializer<ProductContext>(null);
+            Database.SetInitializer<MyContext>(null);
         }
 
         public DbSet<ProductModel> Products { get; set; }

@@ -3,6 +3,7 @@ using StoklamaBandi.EntityFramework.Context;
 using StoklamaBandi.EntityFramework.Entity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,8 +12,7 @@ namespace StoklamaBandi.EntityFramework.DataAccess
 {
     public class ProductDal : IRepositoryBase
     {
-        //ProductContext context;
-        ProductModel _product;
+        //ProductModel _product;
         public ProductDal(ProductModel product)
         {
             
@@ -20,42 +20,58 @@ namespace StoklamaBandi.EntityFramework.DataAccess
 
         public void Add(ProductModel productModel)
         {
-            using (var context = new ProductContext())
+            using (var context = new MyContext())
             {
-                context.Products.Add(new ProductModel
-                {
-                    ProductCode = productModel.ProductCode,
-                    ProductName = productModel.ProductName
-                });
+                var entity = context.Entry(productModel);
+                entity.State = EntityState.Added;
+                context.SaveChanges();
+                //context.Products.Add(new ProductModel
+                //{
+                //    ProductCode = productModel.ProductCode,
+                //    ProductName = productModel.ProductName
+                //});
             }
         }
 
         public void Delete(ProductModel productModel)
         {
-            using (var context = new ProductContext())
+            using (var context = new MyContext())
             {
-                context.Products.Remove(productModel);
+                var entity = context.Entry(productModel);
+                entity.State = EntityState.Deleted;
                 context.SaveChanges();
+
+                //context.Products.Remove(productModel);
+                //context.SaveChanges();
             }
         }
 
         public List<ProductModel> GetAll()
         {
-            using (var context = new ProductContext())
+            using (var context = new MyContext())
             {
                 var result = context.Products.ToList();
                 return result;
             }
         }
 
-        public IEnumerable<ProductModel> GetDetails()
+        public ProductModel GetDetails(int id)
         {
-            throw new NotImplementedException();
+            using (var context = new MyContext())
+            {
+                var result = context.Products.Where(p => p.ProductID == id).FirstOrDefault();
+                return result;
+            }
         }
 
         public void Update(ProductModel productModel)
         {
-            throw new NotImplementedException();
+            using (var context = new MyContext())
+            {
+                var result = context.Entry(productModel);
+                result.State = EntityState.Modified;
+                context.SaveChanges();
+            }
         }
     }
 }

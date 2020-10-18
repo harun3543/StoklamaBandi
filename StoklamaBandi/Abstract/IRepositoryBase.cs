@@ -13,7 +13,7 @@ namespace StoklamaBandi.Abstract
         void Update(ProductModel productModel);
         void Delete(ProductModel productModel);
         List<ProductModel> GetAll();
-        List<ProductModel> GetDetails();
+        ProductModel GetDetails(int id);
 
     }
 }

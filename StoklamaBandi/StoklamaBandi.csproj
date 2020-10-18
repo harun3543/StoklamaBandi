@@ -79,7 +79,7 @@
     <Compile Include="Abstract\IRepositoryBase.cs" />
     <Compile Include="Abstract\IEntity.cs" />
     <Compile Include="Abstract\IModbusManager.cs" />
-    <Compile Include="EntityFramework\Context\ProductContext.cs" />
+    <Compile Include="EntityFramework\Context\MyContext.cs" />
     <Compile Include="EntityFramework\DataAccess\ProductDal.cs" />
     <Compile Include="EntityFramework\Entity\DataGridModel.cs" />
     <Compile Include="EntityFramework\Entity\ProductModel.cs" />

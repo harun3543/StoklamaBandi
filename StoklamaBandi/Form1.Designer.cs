@@ -43,7 +43,11 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.txtIstenilenAdet = new DevExpress.XtraEditors.TextEdit();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
@@ -52,11 +56,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIstenilenAdet.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
             // 
             this.groupControl1.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("groupControl1.CaptionImageOptions.Image")));
+            this.groupControl1.Controls.Add(this.dataGridView1);
             this.groupControl1.Location = new System.Drawing.Point(12, 186);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(984, 475);
@@ -144,6 +151,8 @@
             this.groupControl4.Appearance.BackColor = System.Drawing.Color.Gainsboro;
             this.groupControl4.Appearance.Options.UseBackColor = true;
             this.groupControl4.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("groupControl4.CaptionImageOptions.Image")));
+            this.groupControl4.Controls.Add(this.txtIstenilenAdet);
+            this.groupControl4.Controls.Add(this.labelControl3);
             this.groupControl4.Controls.Add(this.lblSayilanAdet);
             this.groupControl4.Controls.Add(this.labelControl2);
             this.groupControl4.Controls.Add(this.comboBoxEdit1);
@@ -185,6 +194,31 @@
             this.groupControl5.TabIndex = 8;
             this.groupControl5.Text = "Barkod";
             // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.Location = new System.Drawing.Point(5, 123);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(97, 16);
+            this.labelControl3.TabIndex = 8;
+            this.labelControl3.Text = "İstenilen Adet:";
+            // 
+            // txtIstenilenAdet
+            // 
+            this.txtIstenilenAdet.Location = new System.Drawing.Point(111, 120);
+            this.txtIstenilenAdet.Name = "txtIstenilenAdet";
+            this.txtIstenilenAdet.Size = new System.Drawing.Size(71, 20);
+            this.txtIstenilenAdet.TabIndex = 9;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(384, 36);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(595, 434);
+            this.dataGridView1.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -200,6 +234,7 @@
             this.Text = "Stoklama Bandı";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
@@ -209,6 +244,8 @@
             this.groupControl4.ResumeLayout(false);
             this.groupControl4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIstenilenAdet.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -227,6 +264,9 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.GroupControl groupControl5;
         private System.IO.Ports.SerialPort serialPort1;
+        private DevExpress.XtraEditors.TextEdit txtIstenilenAdet;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

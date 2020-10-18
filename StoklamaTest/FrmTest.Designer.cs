@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.btnConnect = new System.Windows.Forms.Button();
             this.btnDisconnect = new System.Windows.Forms.Button();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.btnSetCoil = new System.Windows.Forms.Button();
             this.btnResetCoil = new System.Windows.Forms.Button();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -49,9 +47,10 @@
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(12, 12);
+            this.btnConnect.Location = new System.Drawing.Point(14, 15);
+            this.btnConnect.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(89, 36);
+            this.btnConnect.Size = new System.Drawing.Size(104, 44);
             this.btnConnect.TabIndex = 0;
             this.btnConnect.Text = "Bağlan";
             this.btnConnect.UseVisualStyleBackColor = true;
@@ -59,9 +58,10 @@
             // 
             // btnDisconnect
             // 
-            this.btnDisconnect.Location = new System.Drawing.Point(12, 54);
+            this.btnDisconnect.Location = new System.Drawing.Point(14, 66);
+            this.btnDisconnect.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDisconnect.Name = "btnDisconnect";
-            this.btnDisconnect.Size = new System.Drawing.Size(89, 36);
+            this.btnDisconnect.Size = new System.Drawing.Size(104, 44);
             this.btnDisconnect.TabIndex = 1;
             this.btnDisconnect.Text = "Bağlantıyı Kes";
             this.btnDisconnect.UseVisualStyleBackColor = true;
@@ -71,17 +71,19 @@
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(139, 16);
+            this.labelControl1.Location = new System.Drawing.Point(162, 20);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(38, 16);
+            this.labelControl1.Size = new System.Drawing.Size(52, 19);
             this.labelControl1.TabIndex = 3;
             this.labelControl1.Text = "PORT:";
             // 
             // btnSetCoil
             // 
-            this.btnSetCoil.Location = new System.Drawing.Point(85, 133);
+            this.btnSetCoil.Location = new System.Drawing.Point(99, 164);
+            this.btnSetCoil.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSetCoil.Name = "btnSetCoil";
-            this.btnSetCoil.Size = new System.Drawing.Size(89, 36);
+            this.btnSetCoil.Size = new System.Drawing.Size(104, 44);
             this.btnSetCoil.TabIndex = 4;
             this.btnSetCoil.Text = "Set";
             this.btnSetCoil.UseVisualStyleBackColor = true;
@@ -89,9 +91,10 @@
             // 
             // btnResetCoil
             // 
-            this.btnResetCoil.Location = new System.Drawing.Point(180, 133);
+            this.btnResetCoil.Location = new System.Drawing.Point(210, 164);
+            this.btnResetCoil.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnResetCoil.Name = "btnResetCoil";
-            this.btnResetCoil.Size = new System.Drawing.Size(89, 36);
+            this.btnResetCoil.Size = new System.Drawing.Size(104, 44);
             this.btnResetCoil.TabIndex = 5;
             this.btnResetCoil.Text = "Reset";
             this.btnResetCoil.UseVisualStyleBackColor = true;
@@ -101,41 +104,46 @@
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(12, 143);
+            this.labelControl2.Location = new System.Drawing.Point(14, 176);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(19, 16);
+            this.labelControl2.Size = new System.Drawing.Size(25, 19);
             this.labelControl2.TabIndex = 6;
             this.labelControl2.Text = "MB";
             // 
             // txtCoilRegister
             // 
-            this.txtCoilRegister.Location = new System.Drawing.Point(37, 142);
+            this.txtCoilRegister.Location = new System.Drawing.Point(43, 175);
+            this.txtCoilRegister.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCoilRegister.Name = "txtCoilRegister";
-            this.txtCoilRegister.Size = new System.Drawing.Size(42, 20);
+            this.txtCoilRegister.Size = new System.Drawing.Size(49, 22);
             this.txtCoilRegister.TabIndex = 7;
             // 
             // txtWordRegister
             // 
-            this.txtWordRegister.Location = new System.Drawing.Point(37, 184);
+            this.txtWordRegister.Location = new System.Drawing.Point(43, 226);
+            this.txtWordRegister.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtWordRegister.Name = "txtWordRegister";
-            this.txtWordRegister.Size = new System.Drawing.Size(42, 20);
+            this.txtWordRegister.Size = new System.Drawing.Size(49, 22);
             this.txtWordRegister.TabIndex = 11;
             // 
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(12, 185);
+            this.labelControl3.Location = new System.Drawing.Point(14, 228);
+            this.labelControl3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(24, 16);
+            this.labelControl3.Size = new System.Drawing.Size(30, 19);
             this.labelControl3.TabIndex = 10;
             this.labelControl3.Text = "MW";
             // 
             // btnSetWord
             // 
-            this.btnSetWord.Location = new System.Drawing.Point(180, 175);
+            this.btnSetWord.Location = new System.Drawing.Point(210, 215);
+            this.btnSetWord.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSetWord.Name = "btnSetWord";
-            this.btnSetWord.Size = new System.Drawing.Size(89, 36);
+            this.btnSetWord.Size = new System.Drawing.Size(104, 44);
             this.btnSetWord.TabIndex = 8;
             this.btnSetWord.Text = "Set";
             this.btnSetWord.UseVisualStyleBackColor = true;
@@ -143,24 +151,27 @@
             // 
             // txtWordValue
             // 
-            this.txtWordValue.Location = new System.Drawing.Point(85, 184);
+            this.txtWordValue.Location = new System.Drawing.Point(99, 226);
+            this.txtWordValue.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtWordValue.Name = "txtWordValue";
-            this.txtWordValue.Size = new System.Drawing.Size(89, 20);
+            this.txtWordValue.Size = new System.Drawing.Size(104, 22);
             this.txtWordValue.TabIndex = 12;
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(184, 16);
+            this.comboBox1.Location = new System.Drawing.Point(215, 20);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(149, 21);
+            this.comboBox1.Size = new System.Drawing.Size(173, 24);
             this.comboBox1.TabIndex = 13;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             // 
             // FrmTest
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(438, 256);
+            this.ClientSize = new System.Drawing.Size(511, 315);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.txtWordValue);
             this.Controls.Add(this.txtWordRegister);
@@ -173,6 +184,7 @@
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.btnDisconnect);
             this.Controls.Add(this.btnConnect);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmTest";
             this.Text = "FrmTest";
             ((System.ComponentModel.ISupportInitialize)(this.txtCoilRegister.Properties)).EndInit();
@@ -188,7 +200,6 @@
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.Button btnDisconnect;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.Button btnSetCoil;
         private System.Windows.Forms.Button btnResetCoil;
         private DevExpress.XtraEditors.LabelControl labelControl2;

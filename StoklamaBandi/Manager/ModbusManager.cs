@@ -12,6 +12,7 @@ namespace StoklamaBandi.Manager
     public class ModbusManager : IModbusManager
     {
         ModbusClient modbusClient;
+        public static bool StStateConnection;
         public ModbusManager(string serialPort)
         {
             CreateClient(serialPort);
@@ -21,11 +22,11 @@ namespace StoklamaBandi.Manager
         {
             modbusClient = new ModbusClient(serialPort);
             //modbusClient.UnitIdentifier = 1; Not necessary since default slaveID = 1;
-            //modbusClient.Baudrate = 9600;	// Not necessary since default baudrate = 9600
-            //modbusClient.Parity = System.IO.Ports.Parity.None;
+            modbusClient.Baudrate = 9600;	// Not necessary since default baudrate = 9600
+            modbusClient.Parity = System.IO.Ports.Parity.None;
             //modbusClient.StopBits = System.IO.Ports.StopBits.Two;
-            modbusClient.ConnectionTimeout = 1000;			
-
+            modbusClient.ConnectionTimeout = 1000;
+            modbusClient.ConnectedChanged += new ModbusClient.ConnectedChangedHandler(StateConnection);
             //Connect();
         }
 
@@ -63,11 +64,13 @@ namespace StoklamaBandi.Manager
         {
             modbusClient.WriteSingleRegister(40001 + registerAdd, value);
         }
+
         //***Int değer yazdırma
         public void WriteSingleInt(int registerAdd, int value)
         {
             modbusClient.WriteSingleRegister(41001 + registerAdd, value);
         }
+
         //***Memory bit değeri gönderme.
         public void WriteCoilRegister(int registerAdd, bool bitValue)
         {
@@ -75,5 +78,9 @@ namespace StoklamaBandi.Manager
           
         }
 
+        public virtual void StateConnection(object sender)
+        {
+            StStateConnection = modbusClient.Connected;
+        }
     }
 }

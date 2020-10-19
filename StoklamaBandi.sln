@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoklamaBandi", "StoklamaBa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoklamaTest", "StoklamaTest\StoklamaTest.csproj", "{37203156-C321-4917-A8B8-E503A38EB8AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarcodeTest", "BarcodeTest\BarcodeTest.csproj", "{E8ECC70F-8C35-46FA-8897-6D39314DA75E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{37203156-C321-4917-A8B8-E503A38EB8AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37203156-C321-4917-A8B8-E503A38EB8AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37203156-C321-4917-A8B8-E503A38EB8AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8ECC70F-8C35-46FA-8897-6D39314DA75E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8ECC70F-8C35-46FA-8897-6D39314DA75E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8ECC70F-8C35-46FA-8897-6D39314DA75E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8ECC70F-8C35-46FA-8897-6D39314DA75E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

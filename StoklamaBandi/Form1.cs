@@ -14,15 +14,19 @@ using StoklamaBandi.Manager;
 
 namespace StoklamaBandi
 {
+    delegate void StateEventHandler();
     public partial class Form1 : Form
     {
         ModbusManager modbusManager;
+        PortManager portManager;
         FileStream fsSettings;
         StreamReader streader;
-        Thread ThRead,ThWrite;
-        string _serialPort;
+        Thread ThRead,ThWrite, ThContinuous;
+        string _serialPortName;
+        
         int[] mw;
         bool startStopBit = false;
+        bool readSettingFlag = false;
 
         public Form1()
         {
@@ -33,30 +37,40 @@ namespace StoklamaBandi
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            CreateClient();
+            //portManager = new PortManager();
+
+            CreateModbusManager();
             CreateThread();
         }
 
-        private void CreateClient()
+        private void CreatePort()
+        {
+            if (!readSettingFlag)
+            {
+                portManager.CreatePort(_serialPortName, 9600, 0, 8);
+                portManager.SerialPortOpen();
+            }
+        }
+
+        private void CreateModbusManager()
         {
             ReadSetting();  //COM adresini dosyadan oku
-
-            if (!serialPort1.IsOpen)
+            if (!readSettingFlag)
             {
-                serialPort1.Open();
-            }
+                if (modbusManager == null)
+                {
+                    modbusManager = new ModbusManager(_serialPortName);
+                }
 
-            if (modbusManager == null)
-            {
-                modbusManager = new ModbusManager(_serialPort);
-            }
+                TryConnect();
 
-            TryConnect();
-
-            if (modbusManager.ModbusIsAvaliable())
-            {
-                ButtonLock();
+                if (modbusManager.ModbusIsAvaliable())
+                {
+                    ButtonLock();
+                    OnStart();
+                }
             }
+            
         }
 
         private void TryConnect()
@@ -78,33 +92,38 @@ namespace StoklamaBandi
         {
             try
             {
-                fsSettings = new FileStream("C:/Settings.txt", FileMode.Open, FileAccess.Read);
+                fsSettings = new FileStream("C:/Users/harun.durmus/Documents/Setiings.txt", FileMode.Open, FileAccess.Read);
                 streader = new StreamReader(fsSettings);
 
-                _serialPort = streader.ReadLine();
+                _serialPortName = streader.ReadLine();
 
 
             }
+
             catch (Exception)
             {
                 MessageBox.Show("Ayar dosyası yok");
+                readSettingFlag = true;
             }
 
-            return _serialPort;
+            return _serialPortName;
         }
         #endregion
 
         #region Thread Islemleri
         private void CreateThread()
         {
-            ThRead = new Thread(ThReadStart);
-            ThWrite = new Thread(ThWriteStart);
+            ThRead = new Thread(new ThreadStart(ThReadStart));
+            ThWrite = new Thread(new ThreadStart(ThWriteStart));
+            ThContinuous = new Thread(new ThreadStart(ThContinuousStart));
+            ThContinuous.Start();
         }
 
         private void ThWriteStart()
         {
             ModbusIsAvaliable();
             modbusManager.WriteCoilRegister(10, startStopBit);
+
             Thread.Sleep(200);
         }
 
@@ -113,7 +132,14 @@ namespace StoklamaBandi
             ModbusIsAvaliable();
             mw = modbusManager.ReadSingleWord(10);
             lblSayilanAdet.Text = Convert.ToString(mw);
+
             Thread.Sleep(200);
+        }
+
+        private void ThContinuousStart()
+        {
+            ModbusClientConnect_State();
+            Thread.Sleep(100);
         }
 
         private void ModbusIsAvaliable()
@@ -130,12 +156,12 @@ namespace StoklamaBandi
         #region Buton Kontrolleri 
         private void BtnConnect_Click(object sender, EventArgs e)
         {
-            CreateClient();
+            CreateModbusManager();
+            
             if (modbusManager.ModbusIsAvaliable())
             {
                 OnStart();
             }
-            
         }
         private void BtnStart_Click(object sender, EventArgs e)
         {
@@ -163,14 +189,29 @@ namespace StoklamaBandi
 
         private void OnStart()
         {
-            ThRead.Start();
-            ThWrite.Start();
+            if (modbusManager.ModbusIsAvaliable()) 
+            { 
+                ThRead.Start();
+                ThWrite.Start();
+            }
         }
 
         private void OnStop()
         {
             ThRead.Abort();
             ThWrite.Abort();
+        }
+
+        private void ModbusClientConnect_State()
+        {
+            if (ModbusManager.StStateConnection)
+            {
+                stateConnectComponent.StateIndex = 3;
+            }
+            else
+            {
+                stateConnectComponent.StateIndex = 1;
+            }
         }
     }
 }

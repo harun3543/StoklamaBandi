@@ -45,7 +45,6 @@ C:\GitHub\StoklamaBandi\StoklamaTest\obj\Debug\StoklamaTest.csprojAssemblyRefere
 C:\GitHub\StoklamaBandi\StoklamaTest\obj\Debug\StoklamaTest.FrmTest.resources
 C:\GitHub\StoklamaBandi\StoklamaTest\obj\Debug\StoklamaTest.Properties.Resources.resources
 C:\GitHub\StoklamaBandi\StoklamaTest\obj\Debug\StoklamaTest.csproj.GenerateResource.cache
-C:\GitHub\StoklamaBandi\StoklamaTest\obj\Debug\StoklamaTest.csproj.CoreCompileInputs.cache
 C:\GitHub\StoklamaBandi\StoklamaTest\obj\Debug\StoklamaTest.csproj.CopyComplete
 C:\GitHub\StoklamaBandi\StoklamaTest\obj\Debug\StoklamaTest.exe
 C:\GitHub\StoklamaBandi\StoklamaTest\obj\Debug\StoklamaTest.pdb

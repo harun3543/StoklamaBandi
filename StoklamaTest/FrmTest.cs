@@ -27,10 +27,10 @@ namespace StoklamaTest
 
         private void CreateModbusRTU(object sender, EventArgs e)
         {
-            serialport1 = new SerialPort();
-            serialport1.BaudRate = 9600;
-           // serialport1.StopBits = 0;
-            serialport1.DataBits = 8;
+           // serialport1 = new SerialPort();
+           // serialport1.BaudRate = 9600;
+           //// serialport1.StopBits = 0;
+           // serialport1.DataBits = 8;
             
 
             string[] portlar = SerialPort.GetPortNames();
@@ -42,15 +42,18 @@ namespace StoklamaTest
 
         private void BtnConnect_Click(object sender, EventArgs e)
         {
-            serialport1.PortName = selectedPort;
+            //serialport1.PortName = selectedPort;
             try
             {
-                if (!serialport1.IsOpen)
-                {
-                    serialport1.Open();
-                    MessageBox.Show("Bağlantı sağlandı");
-                }
-                modbusClient = new ModbusClient(comboBox1.Text);
+                //if (!serialport1.IsOpen)
+                //{
+                //    serialport1.Open();
+                //    MessageBox.Show("Bağlantı sağlandı");
+                //}
+                modbusClient = new ModbusClient(selectedPort);
+                modbusClient.Baudrate = 9600;
+                modbusClient.StopBits = StopBits.One;
+                modbusClient.Parity = Parity.None;
                 modbusClient.Connect();
                 
             }

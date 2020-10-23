@@ -21,7 +21,7 @@ namespace StoklamaBandi
         PortManager portManager;
         FileStream fsSettings;
         StreamReader streader;
-        Thread ThRead,ThWrite, ThContinuous;
+        Thread  ThContinuous;
         string _serialPortName;
         
         int[] mw;
@@ -38,8 +38,8 @@ namespace StoklamaBandi
         private void Form1_Load(object sender, EventArgs e)
         {
             //portManager = new PortManager();
-
-            CreateModbusManager();
+            modbusManager = new ModbusManager();
+            //CreateModbusManager();
             CreateThread();
         }
 
@@ -47,44 +47,19 @@ namespace StoklamaBandi
         {
             if (!readSettingFlag)
             {
-                portManager.CreatePort(_serialPortName, 9600, 0, 8);
+                portManager.CreatePort(_serialPortName, 9600, 1, 8);
                 portManager.SerialPortOpen();
             }
         }
 
         private void CreateModbusManager()
         {
-            ReadSetting();  //COM adresini dosyadan oku
-            if (!readSettingFlag)
-            {
-                if (modbusManager == null)
-                {
-                    modbusManager = new ModbusManager(_serialPortName);
-                }
+            //ReadSetting();  //COM adresini dosyadan oku
+            //if (!readSettingFlag)
+            //{
+            //}
 
-                TryConnect();
 
-                if (modbusManager.ModbusIsAvaliable())
-                {
-                    ButtonLock();
-                    OnStart();
-                }
-            }
-            
-        }
-
-        private void TryConnect()
-        {
-            try
-            {
-                modbusManager.Connect();
-            }
-
-            catch (Exception)
-            {
-                MessageBox.Show("PLC ile bağlantı sağlanamadı.");
-
-            }
         }
 
         #region Read Settings
@@ -113,32 +88,31 @@ namespace StoklamaBandi
         #region Thread Islemleri
         private void CreateThread()
         {
-            ThRead = new Thread(new ThreadStart(ThReadStart));
-            ThWrite = new Thread(new ThreadStart(ThWriteStart));
             ThContinuous = new Thread(new ThreadStart(ThContinuousStart));
-            ThContinuous.Start();
-        }
-
-        private void ThWriteStart()
-        {
-            ModbusIsAvaliable();
-            modbusManager.WriteCoilRegister(10, startStopBit);
-
-            Thread.Sleep(200);
-        }
-
-        private void ThReadStart()
-        {
-            ModbusIsAvaliable();
-            mw = modbusManager.ReadSingleWord(10);
-            lblSayilanAdet.Text = Convert.ToString(mw);
-
-            Thread.Sleep(200);
+           
         }
 
         private void ThContinuousStart()
         {
             ModbusClientConnect_State();
+            try
+            {
+                modbusManager.CreateClient("COM1");
+                modbusManager.Connect();
+                if (modbusManager.ModbusIsAvaliable())
+                {
+                    ButtonLock();
+                    //OnStart();
+                }
+                modbusManager.WriteCoilRegister(10, startStopBit);
+                mw = modbusManager.ReadSingleWord(10);
+                lblSayilanAdet.Text = Convert.ToString(mw);
+            }
+            catch (Exception)
+            {
+                ThreadStop();
+            }
+            
             Thread.Sleep(100);
         }
 
@@ -146,7 +120,7 @@ namespace StoklamaBandi
         {
             if (!modbusManager.ModbusIsAvaliable())
             {
-                OnStop();
+                ThreadStop();
                 ButtonUnlock();
                 MessageBox.Show("PLC ile bağlantı zaman aşımına uğradı");
             }
@@ -156,12 +130,8 @@ namespace StoklamaBandi
         #region Buton Kontrolleri 
         private void BtnConnect_Click(object sender, EventArgs e)
         {
-            CreateModbusManager();
-            
-            if (modbusManager.ModbusIsAvaliable())
-            {
-                OnStart();
-            }
+            ThContinuous.Start();
+
         }
         private void BtnStart_Click(object sender, EventArgs e)
         {
@@ -189,17 +159,11 @@ namespace StoklamaBandi
 
         private void OnStart()
         {
-            if (modbusManager.ModbusIsAvaliable()) 
-            { 
-                ThRead.Start();
-                ThWrite.Start();
-            }
         }
 
-        private void OnStop()
+        private void ThreadStop()
         {
-            ThRead.Abort();
-            ThWrite.Abort();
+            ThContinuous.Abort();
         }
 
         private void ModbusClientConnect_State()

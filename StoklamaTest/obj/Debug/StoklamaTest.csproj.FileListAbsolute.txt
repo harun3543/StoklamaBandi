@@ -103,3 +103,4 @@ D:\Projects\GitHub\StoklamaBandi\StoklamaTest\obj\Debug\StoklamaTest.csproj.Core
 D:\Projects\GitHub\StoklamaBandi\StoklamaTest\obj\Debug\StoklamaTest.csproj.CopyComplete
 D:\Projects\GitHub\StoklamaBandi\StoklamaTest\obj\Debug\StoklamaTest.exe
 D:\Projects\GitHub\StoklamaBandi\StoklamaTest\obj\Debug\StoklamaTest.pdb
+C:\GitHub\StoklamaBandi\StoklamaTest\obj\Debug\StoklamaTest.UserKeybord.resources

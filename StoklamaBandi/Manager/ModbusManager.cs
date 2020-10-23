@@ -13,20 +13,22 @@ namespace StoklamaBandi.Manager
     {
         ModbusClient modbusClient;
         public static bool StStateConnection;
-        public ModbusManager(string serialPort)
+        
+        public ModbusManager()
         {
-            CreateClient(serialPort);
+            //CreateClient(serialPort);
+            modbusClient.ConnectedChanged += new ModbusClient.ConnectedChangedHandler(StateConnection);
         }
 
-        private void CreateClient(string serialPort)
+        public void CreateClient(string serialPort)
         {
             modbusClient = new ModbusClient(serialPort);
             //modbusClient.UnitIdentifier = 1; Not necessary since default slaveID = 1;
             modbusClient.Baudrate = 9600;	// Not necessary since default baudrate = 9600
             modbusClient.Parity = System.IO.Ports.Parity.None;
-            //modbusClient.StopBits = System.IO.Ports.StopBits.Two;
+            modbusClient.StopBits = System.IO.Ports.StopBits.Two;
             modbusClient.ConnectionTimeout = 1000;
-            modbusClient.ConnectedChanged += new ModbusClient.ConnectedChangedHandler(StateConnection);
+            
             //Connect();
         }
 

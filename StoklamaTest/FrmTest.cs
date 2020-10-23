@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using EasyModbus;
 using System.IO.Ports;
+using System.Diagnostics;
+using System.Threading;
 
 namespace StoklamaTest
 {
@@ -18,21 +20,22 @@ namespace StoklamaTest
         ModbusClient modbusClient;
         string selectedPort = "COM1";
         SerialPort serialport1;
+        Thread t;
+
         public FrmTest()
         {
             InitializeComponent();
 
-            this.Load += CreateModbusRTU;
+            this.Load += FrmLoad;
         }
 
-        private void CreateModbusRTU(object sender, EventArgs e)
-        {
-           // serialport1 = new SerialPort();
-           // serialport1.BaudRate = 9600;
-           //// serialport1.StopBits = 0;
-           // serialport1.DataBits = 8;
+        private void FrmLoad(object sender, EventArgs e){
             
-
+            // serialport1 = new SerialPort();
+            // serialport1.BaudRate = 9600;
+            //// serialport1.StopBits = 0;
+            // serialport1.DataBits = 8;
+            t = new Thread(new ThreadStart(ConnectToModbus));
             string[] portlar = SerialPort.GetPortNames();
             foreach (string ports in portlar)
             {
@@ -40,39 +43,41 @@ namespace StoklamaTest
             }
         }
 
-        private void BtnConnect_Click(object sender, EventArgs e)
-        {
-            //serialport1.PortName = selectedPort;
+        void ConnectToModbus() {
+
             try
             {
-                //if (!serialport1.IsOpen)
-                //{
-                //    serialport1.Open();
-                //    MessageBox.Show("Bağlantı sağlandı");
-                //}
                 modbusClient = new ModbusClient(selectedPort);
                 modbusClient.Baudrate = 9600;
                 modbusClient.StopBits = StopBits.One;
                 modbusClient.Parity = Parity.None;
                 modbusClient.Connect();
-                
+                //MessageBox.Show("Bağlantı kuruldu");
+
             }
+
             catch (Exception)
             {
-
-                MessageBox.Show("Bağlantı sağlanamadı");
+                //MessageBox.Show("Bağlantı sağlanamadı");
             }
+        }
+        private void BtnConnect_Click(object sender, EventArgs e)
+        {
+            t.Start();
+        
         }
 
         private void BtnDisconnect_Click(object sender, EventArgs e)
         {
-            serialport1.Close();
+            t.Abort();
+            
         }
 
         private void BtnSetCoil_Click(object sender, EventArgs e)
         {
             int register = Convert.ToInt32(txtCoilRegister.Text);
             modbusClient.WriteSingleCoil(register, true);
+
         }
 
         private void BtnResetCoil_Click(object sender, EventArgs e)
@@ -91,6 +96,38 @@ namespace StoklamaTest
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectedPort = comboBox1.Text;
+        }
+
+        //private void TestClick(object sender, EventArgs e)
+        //{
+        //    ShowKeybord();
+        //}
+
+        private void txtCoilRegister_Click(object sender, EventArgs e)
+        {
+            txtCoilRegister.Text = ShowKeybord();
+        }
+
+        private void txtWordRegister_Click(object sender, EventArgs e)
+        {
+            txtWordRegister.Text = ShowKeybord();
+        }
+        private void txtWordValue_Click(object sender, EventArgs e)
+        {
+            txtWordValue.Text = ShowKeybord();
+        }
+        private string ShowKeybord()
+        {
+            string result1 ="";
+            using (var userKeybord = new UserKeybord())
+            {
+                var result = userKeybord.ShowDialog();
+                if (result==DialogResult.OK)
+                {
+                     result1 = userKeybord.ReturnString;
+                }
+            }
+            return result1;
         }
     }
 }

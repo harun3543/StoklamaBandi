@@ -104,3 +104,4 @@ D:\Projects\GitHub\StoklamaBandi\StoklamaTest\obj\Debug\StoklamaTest.csproj.Copy
 D:\Projects\GitHub\StoklamaBandi\StoklamaTest\obj\Debug\StoklamaTest.exe
 D:\Projects\GitHub\StoklamaBandi\StoklamaTest\obj\Debug\StoklamaTest.pdb
 C:\GitHub\StoklamaBandi\StoklamaTest\obj\Debug\StoklamaTest.UserKeybord.resources
+C:\GitHub\StoklamaBandi\StoklamaTest\obj\Debug\StoklamaTest.csproj.CoreCompileInputs.cache

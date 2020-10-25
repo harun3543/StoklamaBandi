@@ -26,7 +26,7 @@ namespace StoklamaBandi.Manager
             //modbusClient.UnitIdentifier = 1; Not necessary since default slaveID = 1;
             modbusClient.Baudrate = 9600;	// Not necessary since default baudrate = 9600
             modbusClient.Parity = System.IO.Ports.Parity.None;
-            modbusClient.StopBits = System.IO.Ports.StopBits.Two;
+            modbusClient.StopBits = System.IO.Ports.StopBits.One;
             modbusClient.ConnectionTimeout = 1000;
             
             //Connect();
@@ -80,7 +80,11 @@ namespace StoklamaBandi.Manager
           
         }
 
-        public virtual void StateConnection(object sender)
+        //public virtual void StateConnection(object sender)
+        //{
+        //    StStateConnection = modbusClient.Connected;
+        //}
+        private void StateConnection(object sender)
         {
             StStateConnection = modbusClient.Connected;
         }

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState5 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState6 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState7 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState8 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState1 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState2 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState3 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState4 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.btnUpdate = new DevExpress.XtraEditors.SimpleButton();
             this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
@@ -66,12 +66,12 @@
             this.lblSayilanAdet = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
+            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtProductName.Properties)).BeginInit();
@@ -112,7 +112,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
+            this.btnUpdate.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.ImageOptions.Image")));
             this.btnUpdate.Location = new System.Drawing.Point(146, 153);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(129, 47);
@@ -121,7 +121,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.ImageOptions.Image")));
+            this.btnDelete.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.ImageOptions.Image")));
             this.btnDelete.Location = new System.Drawing.Point(285, 153);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(129, 47);
@@ -130,7 +130,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btnSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.ImageOptions.Image")));
             this.btnSave.Location = new System.Drawing.Point(8, 153);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(129, 47);
@@ -205,7 +205,7 @@
             // 
             // stateIndicatorGauge1
             // 
-            this.stateIndicatorGauge1.Bounds = new System.Drawing.Rectangle(10, 10, 70, 54);
+            this.stateIndicatorGauge1.Bounds = new System.Drawing.Rectangle(4, 6, 82, 61);
             this.stateIndicatorGauge1.Indicators.AddRange(new DevExpress.XtraGauges.Win.Gauges.State.StateIndicatorComponent[] {
             this.stateConnectComponent});
             this.stateIndicatorGauge1.Name = "stateIndicatorGauge1";
@@ -216,19 +216,19 @@
             this.stateConnectComponent.Name = "stateIndicatorComponent1";
             this.stateConnectComponent.Size = new System.Drawing.SizeF(200F, 200F);
             this.stateConnectComponent.StateIndex = 1;
-            ındicatorState5.Name = "State1";
-            ındicatorState5.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight1;
-            ındicatorState6.Name = "State2";
-            ındicatorState6.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight2;
-            ındicatorState7.Name = "State3";
-            ındicatorState7.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight3;
-            ındicatorState8.Name = "State4";
-            ındicatorState8.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight4;
+            ındicatorState1.Name = "State1";
+            ındicatorState1.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight1;
+            ındicatorState2.Name = "State2";
+            ındicatorState2.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight2;
+            ındicatorState3.Name = "State3";
+            ındicatorState3.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight3;
+            ındicatorState4.Name = "State4";
+            ındicatorState4.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight4;
             this.stateConnectComponent.States.AddRange(new DevExpress.XtraGauges.Core.Model.IIndicatorState[] {
-            ındicatorState5,
-            ındicatorState6,
-            ındicatorState7,
-            ındicatorState8});
+            ındicatorState1,
+            ındicatorState2,
+            ındicatorState3,
+            ındicatorState4});
             // 
             // btnConnect
             // 
@@ -449,6 +449,36 @@
             this.groupControl5.TabIndex = 16;
             this.groupControl5.Text = "Seçilen Reçete Bilgileri";
             // 
+            // labelControl15
+            // 
+            this.labelControl15.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl15.Appearance.Options.UseFont = true;
+            this.labelControl15.Location = new System.Drawing.Point(126, 112);
+            this.labelControl15.Name = "labelControl15";
+            this.labelControl15.Size = new System.Drawing.Size(15, 16);
+            this.labelControl15.TabIndex = 16;
+            this.labelControl15.Text = "---";
+            // 
+            // labelControl14
+            // 
+            this.labelControl14.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl14.Appearance.Options.UseFont = true;
+            this.labelControl14.Location = new System.Drawing.Point(126, 75);
+            this.labelControl14.Name = "labelControl14";
+            this.labelControl14.Size = new System.Drawing.Size(15, 16);
+            this.labelControl14.TabIndex = 16;
+            this.labelControl14.Text = "---";
+            // 
+            // labelControl13
+            // 
+            this.labelControl13.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelControl13.Appearance.Options.UseFont = true;
+            this.labelControl13.Location = new System.Drawing.Point(126, 39);
+            this.labelControl13.Name = "labelControl13";
+            this.labelControl13.Size = new System.Drawing.Size(15, 16);
+            this.labelControl13.TabIndex = 16;
+            this.labelControl13.Text = "---";
+            // 
             // labelControl12
             // 
             this.labelControl12.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -478,36 +508,6 @@
             this.labelControl11.Size = new System.Drawing.Size(97, 16);
             this.labelControl11.TabIndex = 15;
             this.labelControl11.Text = "Malzeme Kodu:";
-            // 
-            // labelControl13
-            // 
-            this.labelControl13.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.labelControl13.Appearance.Options.UseFont = true;
-            this.labelControl13.Location = new System.Drawing.Point(126, 39);
-            this.labelControl13.Name = "labelControl13";
-            this.labelControl13.Size = new System.Drawing.Size(15, 16);
-            this.labelControl13.TabIndex = 16;
-            this.labelControl13.Text = "---";
-            // 
-            // labelControl14
-            // 
-            this.labelControl14.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl14.Appearance.Options.UseFont = true;
-            this.labelControl14.Location = new System.Drawing.Point(126, 75);
-            this.labelControl14.Name = "labelControl14";
-            this.labelControl14.Size = new System.Drawing.Size(15, 16);
-            this.labelControl14.TabIndex = 16;
-            this.labelControl14.Text = "---";
-            // 
-            // labelControl15
-            // 
-            this.labelControl15.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl15.Appearance.Options.UseFont = true;
-            this.labelControl15.Location = new System.Drawing.Point(126, 112);
-            this.labelControl15.Name = "labelControl15";
-            this.labelControl15.Size = new System.Drawing.Size(15, 16);
-            this.labelControl15.TabIndex = 16;
-            this.labelControl15.Text = "---";
             // 
             // Form1
             // 

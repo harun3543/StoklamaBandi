@@ -17,7 +17,7 @@ namespace StoklamaBandi.Manager
         public ModbusManager()
         {
             //CreateClient(serialPort);
-            modbusClient.ConnectedChanged += new ModbusClient.ConnectedChangedHandler(StateConnection);
+            //modbusClient.ConnectedChanged += new ModbusClient.ConnectedChangedHandler(StateConnection);
         }
 
         public void CreateClient(string serialPort)
@@ -28,7 +28,7 @@ namespace StoklamaBandi.Manager
             modbusClient.Parity = System.IO.Ports.Parity.None;
             modbusClient.StopBits = System.IO.Ports.StopBits.One;
             modbusClient.ConnectionTimeout = 1000;
-            
+            modbusClient.ConnectedChanged += new ModbusClient.ConnectedChangedHandler(StateConnection);
             //Connect();
         }
 

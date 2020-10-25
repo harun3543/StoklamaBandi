@@ -3,19 +3,22 @@ using StoklamaBandi.EntityFramework.Context;
 using StoklamaBandi.EntityFramework.Entity;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
+using System.Data.Linq;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace StoklamaBandi.EntityFramework.DataAccess
 {
-    public class ProductDal : IRepositoryBase
+    public class ProductDal : IRepositoryBase 
     {
         //ProductModel _product;
-        public ProductDal(ProductModel product)
+        public ProductDal()
         {
-            
+            CreateDatabase();
         }
 
         public void Add(ProductModel productModel)
@@ -71,7 +74,23 @@ namespace StoklamaBandi.EntityFramework.DataAccess
                 var result = context.Entry(productModel);
                 result.State = EntityState.Modified;
                 context.SaveChanges();
+                
             }
         }
+
+        public void CreateDatabase()
+        {
+            
+            using (var context = new MyContext())
+            {
+                //if (!context.Database.Exists())
+                //{
+                    context.Database.Create();
+                //}
+                
+            }
+
+        }
+
     }
 }

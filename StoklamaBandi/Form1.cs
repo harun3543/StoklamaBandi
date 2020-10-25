@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using EasyModbus;
 using System.Threading;
 using StoklamaBandi.Manager;
+using StoklamaBandi.EntityFramework.DataAccess;
+using StoklamaBandi.EntityFramework.Entity;
 
 namespace StoklamaBandi
 {
@@ -19,6 +21,7 @@ namespace StoklamaBandi
     {
         ModbusManager modbusManager;
         PortManager portManager;
+        ProductDal productDal;
         FileStream fsSettings;
         StreamReader streader;
         Thread  ThReadContinuous, ThWriteContinuous, ThState;
@@ -42,6 +45,7 @@ namespace StoklamaBandi
             //CreateModbusManager();
             CreateThread();
             ThState.Start();
+            productDal = new ProductDal();
         }
         private void CreatePort()
         {
@@ -160,11 +164,15 @@ namespace StoklamaBandi
             startStopBit = false;
            
         }
+
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            productDal.Add(new ProductModel { ProductCode = "ad" });
+        }
         private void ButtonLock()
         {
             btnConnect.Enabled = false;
         }
-
         private void ButtonUnlock()
         {
             btnConnect.Enabled = true;

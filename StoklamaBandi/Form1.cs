@@ -28,6 +28,7 @@ namespace StoklamaBandi
         string _serialPortName;
         
         int[] mw;
+        string sIstenilenAdet;
         bool startStopBit = false;
         bool readSettingFlag = false;
 
@@ -94,6 +95,8 @@ namespace StoklamaBandi
             ThReadContinuous = new Thread(new ThreadStart(ThReadConStart));
             ThWriteContinuous = new Thread(new ThreadStart(ThWriteConStart));
             ThState = new Thread(new ThreadStart(ThStateStart));
+
+            Control.CheckForIllegalCrossThreadCalls = false;
         }
 
         private void ThWriteConStart()
@@ -146,6 +149,7 @@ namespace StoklamaBandi
         {
             ThReadContinuous.Abort();
             ThWriteContinuous.Abort();
+            MessageBox.Show("PLC ile bağlantı koptu.");
         }
         #endregion
         
@@ -173,6 +177,12 @@ namespace StoklamaBandi
         {
             btnConnect.Enabled = false;
         }
+
+        private void TxtIstenilenAdet_EditValueChanged(object sender, EventArgs e)
+        {
+            sIstenilenAdet = txtIstenilenAdet.Text;
+        }
+
         private void ButtonUnlock()
         {
             btnConnect.Enabled = true;

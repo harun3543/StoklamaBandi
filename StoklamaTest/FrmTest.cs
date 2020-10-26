@@ -63,7 +63,7 @@ namespace StoklamaTest
         }
         private void BtnConnect_Click(object sender, EventArgs e)
         {
-            t.Start();
+            
         
         }
 
@@ -75,19 +75,34 @@ namespace StoklamaTest
 
         private void BtnSetCoil_Click(object sender, EventArgs e)
         {
+            modbusClient = new ModbusClient(selectedPort);
+            modbusClient.Baudrate = 9600;
+            modbusClient.StopBits = StopBits.One;
+            modbusClient.Parity = Parity.None;
+            modbusClient.Connect();
             int register = Convert.ToInt32(txtCoilRegister.Text);
-            modbusClient.WriteSingleCoil(register, true);
+            modbusClient.WriteSingleCoil(00001 + register, true);
 
         }
 
         private void BtnResetCoil_Click(object sender, EventArgs e)
         {
+            modbusClient = new ModbusClient(selectedPort);
+            modbusClient.Baudrate = 9600;
+            modbusClient.StopBits = StopBits.One;
+            modbusClient.Parity = Parity.None;
+            modbusClient.Connect();
             int register = Convert.ToInt32(txtCoilRegister.Text);
-            modbusClient.WriteSingleCoil(register, false);
+            modbusClient.WriteSingleCoil(00001 + register, false);
         }
 
         private void BtnSetWord_Click(object sender, EventArgs e)
         {
+            modbusClient = new ModbusClient(selectedPort);
+            modbusClient.Baudrate = 9600;
+            modbusClient.StopBits = StopBits.One;
+            modbusClient.Parity = Parity.None;
+            modbusClient.Connect();
             int register = Convert.ToInt32(txtWordRegister.Text);
             int value = Convert.ToInt32(txtWordValue.Text);
             modbusClient.WriteSingleRegister(40001 + register, value);

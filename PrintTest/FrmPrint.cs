@@ -72,9 +72,13 @@ namespace PrintTest
         private void btnPrint_Click(object sender, EventArgs e)
         {
             XtraReport report = new XtraReport();
-            report.DataSource = GetDatasourceList();
+            report.DataSource = GetDatasource();
             report.LoadLayout(textEdit1.Text);
-            report.Print("Olivetti ALT");
+            ReportPrintTool printTool = new ReportPrintTool(report);
+            //printTool.PrintDialog();
+            printTool.Print("Argox OS-214 plus series PPLA");
+
+            //report.Print("Argox OS-214 plus series PPLA");
         }
     }
     public class PrintModel

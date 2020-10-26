@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="20.1.3.0" Ref="1" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="XtraReport" SnapGridSize="25" ReportUnit="TenthsOfAMillimeter" Margins="0, 0, 24, 19" PaperKind="Custom" PageWidth="1001" PageHeight="1001" Version="20.1" DataSource="#Ref-0" Dpi="254">
+  <Bands>
+    <Item1 Ref="2" ControlType="TopMarginBand" Name="TopMargin" HeightF="24" Dpi="254" />
+    <Item2 Ref="3" ControlType="DetailBand" Name="Detail" HeightF="502.916656" Dpi="254">
+      <HierarchyPrintOptions Ref="4" Indent="50.8" />
+      <Controls>
+        <Item1 Ref="5" ControlType="XRPanel" Name="panel1" SizeF="947.2084,439.2083" LocationFloat="26.458334,21.3749866" Dpi="254" Borders="All">
+          <Controls>
+            <Item1 Ref="6" ControlType="XRBarCode" Name="barCode1" Module="5.08" AutoModule="true" SizeF="508,116.416687" LocationFloat="132.291672,279.2709" Dpi="254" Font="Tahoma, 8pt" Padding="10,10,0,0,96" Borders="None">
+              <Symbology Ref="7" Name="Code128" />
+              <ExpressionBindings>
+                <Item1 Ref="8" EventName="BeforePrint" PropertyName="Text" Expression="[Barkod]" />
+              </ExpressionBindings>
+              <StylePriority Ref="9" UseFont="false" UseBorders="false" />
+            </Item1>
+            <Item2 Ref="10" ControlType="XRLabel" Name="label6" Multiline="true" Text="label1" TextAlignment="TopLeft" SizeF="254,58.42" LocationFloat="386.2917,187.7483" Dpi="254" Font="Tahoma, 8pt, style=Bold" Padding="5,5,0,0,254" Borders="None">
+              <ExpressionBindings>
+                <Item1 Ref="11" EventName="BeforePrint" PropertyName="Text" Expression="[Miktar]" />
+              </ExpressionBindings>
+              <StylePriority Ref="12" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+            </Item2>
+            <Item3 Ref="13" ControlType="XRLabel" Name="label5" Multiline="true" Text="Miktar" TextAlignment="TopRight" SizeF="254,58.42" LocationFloat="71.4375,187.7483" Dpi="254" Font="Tahoma, 8pt" Padding="5,5,0,0,254" Borders="None">
+              <StylePriority Ref="14" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+            </Item3>
+            <Item4 Ref="15" ControlType="XRLabel" Name="label4" Multiline="true" Text="Malzeme Kodu" TextAlignment="TopRight" SizeF="254,58.42" LocationFloat="71.4375,111.019104" Dpi="254" Font="Tahoma, 8pt" Padding="5,5,0,0,254" Borders="None">
+              <StylePriority Ref="16" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+            </Item4>
+            <Item5 Ref="17" ControlType="XRLabel" Name="label3" Multiline="true" Text="Malzeme Adı" TextAlignment="TopRight" SizeF="254,58.42" LocationFloat="71.4375,25.00001" Dpi="254" Font="Tahoma, 8pt" Padding="2,2,0,0,96" Borders="None">
+              <StylePriority Ref="18" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+            </Item5>
+            <Item6 Ref="19" ControlType="XRLabel" Name="label2" Multiline="true" Text="label2" TextAlignment="TopLeft" SizeF="535.9166,58.420002" LocationFloat="386.2917,25.00001" Dpi="254" Font="Tahoma, 8pt, style=Bold" Padding="2,2,0,0,96" Borders="None">
+              <ExpressionBindings>
+                <Item1 Ref="20" EventName="BeforePrint" PropertyName="Text" Expression="[MalzemeAdi]" />
+              </ExpressionBindings>
+              <StylePriority Ref="21" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+            </Item6>
+            <Item7 Ref="22" ControlType="XRLabel" Name="label1" Multiline="true" Text="label1" TextAlignment="TopLeft" SizeF="535.9166,58.4200134" LocationFloat="386.2917,111.019104" Dpi="254" Font="Tahoma, 8pt, style=Bold" Padding="2,2,0,0,96" Borders="None">
+              <ExpressionBindings>
+                <Item1 Ref="23" EventName="BeforePrint" PropertyName="Text" Expression="[MalzemeKodu]" />
+              </ExpressionBindings>
+              <StylePriority Ref="24" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+            </Item7>
+          </Controls>
+          <StylePriority Ref="25" UseBorders="false" />
+        </Item1>
+      </Controls>
+    </Item2>
+    <Item3 Ref="26" ControlType="BottomMarginBand" Name="BottomMargin" HeightF="18.520834" Dpi="254" />
+  </Bands>
+  <ObjectStorage>
+    <Item1 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v20.1" Ref="0" Content="~Xtra#NULL" Type="System.Collections.Generic.List`1[[PrintTest.PrintModel, PrintTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" />
+  </ObjectStorage>
+</XtraReportsLayoutSerializer>

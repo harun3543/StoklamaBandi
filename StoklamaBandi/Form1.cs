@@ -103,15 +103,16 @@ namespace StoklamaBandi
         {
             try
             {
-                modbusManager.CreateClient("COM1");
+                //modbusManager.CreateClient("COM1");
                 modbusManager.Connect();
                 modbusManager.WriteCoilRegister(10, startStopBit);
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 ThreadStop();
                 ButtonUnlock();
+                lblSistemDurumu.Text = e.Message;
             }
         }
 
@@ -119,7 +120,7 @@ namespace StoklamaBandi
         {
             try
             {
-                modbusManager.CreateClient("COM1");
+                //modbusManager.CreateClient("COM1");
                 modbusManager.Connect();
 
                 if (modbusManager.ModbusIsAvaliable())
@@ -131,10 +132,11 @@ namespace StoklamaBandi
                 mw = modbusManager.ReadSingleWord(10);
                 lblSayilanAdet.Text = Convert.ToString(mw);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 ThreadStop();
-                ButtonUnlock();
+                ButtonUnlock(); 
+                lblSistemDurumu.Text = e.Message;
             }
             
             Thread.Sleep(100);
@@ -157,7 +159,7 @@ namespace StoklamaBandi
         private void BtnConnect_Click(object sender, EventArgs e)
         {
             ThReadContinuous.Start();
-            ThWriteContinuous.Start();
+            //ThWriteContinuous.Start();
         }
         private void BtnStart_Click(object sender, EventArgs e)
         {

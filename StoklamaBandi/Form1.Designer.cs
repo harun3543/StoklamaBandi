@@ -72,6 +72,7 @@
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.lblSistemDurumu = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtProductName.Properties)).BeginInit();
@@ -186,6 +187,7 @@
             // groupControl2
             // 
             this.groupControl2.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("groupControl2.CaptionImageOptions.Image")));
+            this.groupControl2.Controls.Add(this.lblSistemDurumu);
             this.groupControl2.Controls.Add(this.gaugeControl1);
             this.groupControl2.Controls.Add(this.btnConnect);
             this.groupControl2.Location = new System.Drawing.Point(12, 645);
@@ -511,6 +513,15 @@
             this.labelControl11.TabIndex = 15;
             this.labelControl11.Text = "Malzeme Kodu:";
             // 
+            // lblSistemDurumu
+            // 
+            this.lblSistemDurumu.AutoSize = true;
+            this.lblSistemDurumu.Location = new System.Drawing.Point(574, 23);
+            this.lblSistemDurumu.Name = "lblSistemDurumu";
+            this.lblSistemDurumu.Size = new System.Drawing.Size(78, 13);
+            this.lblSistemDurumu.TabIndex = 2;
+            this.lblSistemDurumu.Text = "Sistem Durumu";
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -532,6 +543,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
+            this.groupControl2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stateIndicatorGauge1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stateConnectComponent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
@@ -590,6 +602,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl15;
         private DevExpress.XtraEditors.LabelControl labelControl14;
         private DevExpress.XtraEditors.LabelControl labelControl13;
+        private System.Windows.Forms.Label lblSistemDurumu;
     }
 }
 

@@ -13,6 +13,8 @@ using System.IO.Ports;
 using System.Diagnostics;
 using System.Threading;
 
+using SharpModbus;
+
 namespace StoklamaTest
 {
     public partial class FrmTest : DevExpress.XtraEditors.XtraForm
@@ -31,11 +33,13 @@ namespace StoklamaTest
 
         private void FrmLoad(object sender, EventArgs e){
             
-            // serialport1 = new SerialPort();
-            // serialport1.BaudRate = 9600;
-            //// serialport1.StopBits = 0;
-            // serialport1.DataBits = 8;
-            t = new Thread(new ThreadStart(ConnectToModbus));
+            //serialport1 = new SerialPort();
+            //serialport1.BaudRate = 9600;
+            //serialport1.StopBits = StopBits.One;
+            //serialport1.DataBits = 8;
+            //serialport1.PortName = "COM8";
+            //serialport1.Open();
+            //t = new Thread(new ThreadStart(ConnectToModbus));
             string[] portlar = SerialPort.GetPortNames();
             foreach (string ports in portlar)
             {
@@ -61,51 +65,100 @@ namespace StoklamaTest
                 //MessageBox.Show("Bağlantı sağlanamadı");
             }
         }
+
         private void BtnConnect_Click(object sender, EventArgs e)
         {
+            try
+            {
+                
+                modbusClient = new ModbusClient(selectedPort);
+                modbusClient.Baudrate = 9600;
+                modbusClient.StopBits = StopBits.One;
+                modbusClient.Parity = Parity.None;
+                modbusClient.UnitIdentifier = 1;
+                modbusClient.ConnectionTimeout = 1000;
+                modbusClient.ReceiveDataChanged += new ModbusClient.ReceiveDataChangedHandler(ReceviedHandler);
+                modbusClient.Connect();
+                MessageBox.Show("Başarılı bir şekilde bağlandı");
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Bağlantı Sağlanamadı");
+            }
             
-        
+        }
+
+        private void ReceviedHandler(object sender)
+        {
+            
         }
 
         private void BtnDisconnect_Click(object sender, EventArgs e)
         {
-            t.Abort();
+            modbusClient.Disconnect();
+            //t.Abort();
             
         }
 
         private void BtnSetCoil_Click(object sender, EventArgs e)
         {
-            modbusClient = new ModbusClient(selectedPort);
-            modbusClient.Baudrate = 9600;
-            modbusClient.StopBits = StopBits.One;
-            modbusClient.Parity = Parity.None;
-            modbusClient.Connect();
-            int register = Convert.ToInt32(txtCoilRegister.Text);
-            modbusClient.WriteSingleCoil(00001 + register, true);
+            //modbusClient = new ModbusClient(selectedPort);
+            //modbusClient.Baudrate = 9600;
+            //modbusClient.StopBits = StopBits.One;
+            //modbusClient.Parity = Parity.None;
+            try
+            {
+                //modbusClient.Connect();
+                int register = Convert.ToInt32(txtCoilRegister.Text);
+                modbusClient.WriteSingleCoil(00001 + register, true);
+                
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Bit set etme başarısız.");
+            }
+
 
         }
 
         private void BtnResetCoil_Click(object sender, EventArgs e)
         {
-            modbusClient = new ModbusClient(selectedPort);
-            modbusClient.Baudrate = 9600;
-            modbusClient.StopBits = StopBits.One;
-            modbusClient.Parity = Parity.None;
-            modbusClient.Connect();
-            int register = Convert.ToInt32(txtCoilRegister.Text);
-            modbusClient.WriteSingleCoil(00001 + register, false);
+            //modbusClient = new ModbusClient(selectedPort);
+            //modbusClient.Baudrate = 9600;
+            //modbusClient.StopBits = StopBits.One;
+            //modbusClient.Parity = Parity.None;
+            try
+            {
+                //modbusClient.Connect();
+                int register = Convert.ToInt32(txtCoilRegister.Text);
+                modbusClient.WriteSingleCoil(00001 + register, false);
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Bit reset etme başarısız.");
+            }
+
         }
 
         private void BtnSetWord_Click(object sender, EventArgs e)
         {
-            modbusClient = new ModbusClient(selectedPort);
-            modbusClient.Baudrate = 9600;
-            modbusClient.StopBits = StopBits.One;
-            modbusClient.Parity = Parity.None;
-            modbusClient.Connect();
-            int register = Convert.ToInt32(txtWordRegister.Text);
-            int value = Convert.ToInt32(txtWordValue.Text);
-            modbusClient.WriteSingleRegister(40001 + register, value);
+            try
+            {
+                int register = Convert.ToInt32(txtWordRegister.Text);
+                int value = Convert.ToInt32(txtWordValue.Text);
+                int result = 40001 + register;
+                modbusClient.WriteSingleRegister(40001 + register, value);
+            }
+
+            catch (Exception)
+            {
+
+                MessageBox.Show("Word gönderme başarısız.");
+            }
+
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)

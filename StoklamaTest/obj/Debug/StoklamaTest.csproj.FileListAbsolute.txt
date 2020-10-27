@@ -104,4 +104,7 @@ D:\Projects\GitHub\StoklamaBandi\StoklamaTest\obj\Debug\StoklamaTest.csproj.Copy
 D:\Projects\GitHub\StoklamaBandi\StoklamaTest\obj\Debug\StoklamaTest.exe
 D:\Projects\GitHub\StoklamaBandi\StoklamaTest\obj\Debug\StoklamaTest.pdb
 C:\GitHub\StoklamaBandi\StoklamaTest\obj\Debug\StoklamaTest.UserKeybord.resources
-C:\GitHub\StoklamaBandi\StoklamaTest\obj\Debug\StoklamaTest.csproj.CoreCompileInputs.cache
+C:\GitHub\StoklamaBandi\StoklamaTest\bin\Debug\Newtonsoft.Json.dll
+C:\GitHub\StoklamaBandi\StoklamaTest\bin\Debug\SharpModbus.dll
+C:\GitHub\StoklamaBandi\StoklamaTest\bin\Debug\SharpSerial.exe
+C:\GitHub\StoklamaBandi\StoklamaTest\bin\Debug\Newtonsoft.Json.xml

@@ -41,8 +41,9 @@
             this.txtProductName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.txtProductCode = new DevExpress.XtraEditors.TextEdit();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgwRecipe = new System.Windows.Forms.DataGridView();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.lblSistemDurumu = new System.Windows.Forms.Label();
             this.gaugeControl1 = new DevExpress.XtraGauges.Win.GaugeControl();
             this.stateIndicatorGauge1 = new DevExpress.XtraGauges.Win.Gauges.State.StateIndicatorGauge();
             this.stateConnectComponent = new DevExpress.XtraGauges.Win.Gauges.State.StateIndicatorComponent();
@@ -51,13 +52,12 @@
             this.btnStop = new DevExpress.XtraEditors.SimpleButton();
             this.btnStart = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.cbxSelecetedRecipe = new DevExpress.XtraEditors.ComboBoxEdit();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.cbxSelectRecipe = new System.Windows.Forms.ComboBox();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit4 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            this.btnHurdala = new DevExpress.XtraEditors.SimpleButton();
             this.btnIslemeAl = new DevExpress.XtraEditors.SimpleButton();
             this.txtHataliUrun = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -66,25 +66,23 @@
             this.lblSayilanAdet = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
-            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
+            this.lblShowAdet = new DevExpress.XtraEditors.LabelControl();
+            this.lblShowProductName = new DevExpress.XtraEditors.LabelControl();
+            this.lblShowProductCode = new DevExpress.XtraEditors.LabelControl();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
-            this.lblSistemDurumu = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtProductName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtProductCode.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwRecipe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stateIndicatorGauge1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stateConnectComponent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbxSelecetedRecipe.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).BeginInit();
@@ -104,7 +102,7 @@
             this.groupControl1.Controls.Add(this.txtProductName);
             this.groupControl1.Controls.Add(this.labelControl5);
             this.groupControl1.Controls.Add(this.txtProductCode);
-            this.groupControl1.Controls.Add(this.dataGridView1);
+            this.groupControl1.Controls.Add(this.dgwRecipe);
             this.groupControl1.Location = new System.Drawing.Point(12, 292);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(1240, 347);
@@ -119,6 +117,7 @@
             this.btnUpdate.Size = new System.Drawing.Size(129, 47);
             this.btnUpdate.TabIndex = 17;
             this.btnUpdate.Text = "Güncelle";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
@@ -128,6 +127,7 @@
             this.btnDelete.Size = new System.Drawing.Size(129, 47);
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Sil";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSave
             // 
@@ -155,6 +155,7 @@
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(190, 20);
             this.txtProductName.TabIndex = 14;
+            this.txtProductName.Click += new System.EventHandler(this.Txt_Click);
             // 
             // labelControl5
             // 
@@ -172,17 +173,19 @@
             this.txtProductCode.Name = "txtProductCode";
             this.txtProductCode.Size = new System.Drawing.Size(190, 20);
             this.txtProductCode.TabIndex = 12;
+            this.txtProductCode.Click += new System.EventHandler(this.Txt_Click);
             // 
-            // dataGridView1
+            // dgwRecipe
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgwRecipe.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(577, 36);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(658, 306);
-            this.dataGridView1.TabIndex = 0;
+            this.dgwRecipe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwRecipe.Location = new System.Drawing.Point(694, 36);
+            this.dgwRecipe.Name = "dgwRecipe";
+            this.dgwRecipe.Size = new System.Drawing.Size(541, 306);
+            this.dgwRecipe.TabIndex = 0;
+            this.dgwRecipe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwRecipe_CellClick);
             // 
             // groupControl2
             // 
@@ -195,6 +198,15 @@
             this.groupControl2.Size = new System.Drawing.Size(1240, 104);
             this.groupControl2.TabIndex = 4;
             this.groupControl2.Text = "Bağlantı Durumu";
+            // 
+            // lblSistemDurumu
+            // 
+            this.lblSistemDurumu.AutoSize = true;
+            this.lblSistemDurumu.Location = new System.Drawing.Point(302, 57);
+            this.lblSistemDurumu.Name = "lblSistemDurumu";
+            this.lblSistemDurumu.Size = new System.Drawing.Size(78, 13);
+            this.lblSistemDurumu.TabIndex = 2;
+            this.lblSistemDurumu.Text = "Sistem Durumu";
             // 
             // gaugeControl1
             // 
@@ -256,7 +268,7 @@
             this.groupControl3.Controls.Add(this.btnStart);
             this.groupControl3.Location = new System.Drawing.Point(12, 13);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(171, 273);
+            this.groupControl3.Size = new System.Drawing.Size(207, 273);
             this.groupControl3.TabIndex = 5;
             this.groupControl3.Text = "Süreç İşlemleri";
             // 
@@ -265,7 +277,7 @@
             this.btnStop.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnStop.ImageOptions.Image")));
             this.btnStop.Location = new System.Drawing.Point(5, 169);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(161, 67);
+            this.btnStop.Size = new System.Drawing.Size(197, 67);
             this.btnStop.TabIndex = 3;
             this.btnStop.Text = "Durdur";
             this.btnStop.Click += new System.EventHandler(this.BtnStop_Click);
@@ -275,7 +287,7 @@
             this.btnStart.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnStart.ImageOptions.Image")));
             this.btnStart.Location = new System.Drawing.Point(8, 62);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(158, 66);
+            this.btnStart.Size = new System.Drawing.Size(194, 66);
             this.btnStart.TabIndex = 2;
             this.btnStart.Text = "Başlat";
             this.btnStart.Click += new System.EventHandler(this.BtnStart_Click);
@@ -290,25 +302,16 @@
             this.labelControl1.TabIndex = 4;
             this.labelControl1.Text = "Seçilen Reçete:";
             // 
-            // cbxSelecetedRecipe
-            // 
-            this.cbxSelecetedRecipe.Location = new System.Drawing.Point(128, 37);
-            this.cbxSelecetedRecipe.Name = "cbxSelecetedRecipe";
-            this.cbxSelecetedRecipe.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbxSelecetedRecipe.Size = new System.Drawing.Size(183, 20);
-            this.cbxSelecetedRecipe.TabIndex = 5;
-            // 
             // groupControl4
             // 
             this.groupControl4.Appearance.BackColor = System.Drawing.Color.Gainsboro;
             this.groupControl4.Appearance.Options.UseBackColor = true;
             this.groupControl4.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("groupControl4.CaptionImageOptions.Image")));
+            this.groupControl4.Controls.Add(this.cbxSelectRecipe);
             this.groupControl4.Controls.Add(this.labelControl9);
             this.groupControl4.Controls.Add(this.textEdit4);
             this.groupControl4.Controls.Add(this.labelControl10);
             this.groupControl4.Controls.Add(this.labelControl8);
-            this.groupControl4.Controls.Add(this.btnHurdala);
             this.groupControl4.Controls.Add(this.btnIslemeAl);
             this.groupControl4.Controls.Add(this.txtHataliUrun);
             this.groupControl4.Controls.Add(this.labelControl4);
@@ -316,13 +319,21 @@
             this.groupControl4.Controls.Add(this.labelControl3);
             this.groupControl4.Controls.Add(this.lblSayilanAdet);
             this.groupControl4.Controls.Add(this.labelControl2);
-            this.groupControl4.Controls.Add(this.cbxSelecetedRecipe);
             this.groupControl4.Controls.Add(this.labelControl1);
-            this.groupControl4.Location = new System.Drawing.Point(189, 13);
+            this.groupControl4.Location = new System.Drawing.Point(225, 13);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(587, 273);
+            this.groupControl4.Size = new System.Drawing.Size(551, 273);
             this.groupControl4.TabIndex = 6;
             this.groupControl4.Text = "Reçete Seçimi";
+            // 
+            // cbxSelectRecipe
+            // 
+            this.cbxSelectRecipe.FormattingEnabled = true;
+            this.cbxSelectRecipe.Location = new System.Drawing.Point(128, 39);
+            this.cbxSelectRecipe.Name = "cbxSelectRecipe";
+            this.cbxSelectRecipe.Size = new System.Drawing.Size(187, 21);
+            this.cbxSelectRecipe.TabIndex = 16;
+            this.cbxSelectRecipe.SelectedIndexChanged += new System.EventHandler(this.cbxSelectRecipe_IndexChanged);
             // 
             // labelControl9
             // 
@@ -340,6 +351,7 @@
             this.textEdit4.Name = "textEdit4";
             this.textEdit4.Size = new System.Drawing.Size(71, 20);
             this.textEdit4.TabIndex = 14;
+            this.textEdit4.Click += new System.EventHandler(this.Txt_Click);
             // 
             // labelControl10
             // 
@@ -361,17 +373,6 @@
             this.labelControl8.TabIndex = 12;
             this.labelControl8.Text = "(1. Bölge)";
             // 
-            // btnHurdala
-            // 
-            this.btnHurdala.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnHurdala.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnHurdala.ImageOptions.Image")));
-            this.btnHurdala.Location = new System.Drawing.Point(413, 181);
-            this.btnHurdala.Name = "btnHurdala";
-            this.btnHurdala.Size = new System.Drawing.Size(169, 85);
-            this.btnHurdala.TabIndex = 4;
-            this.btnHurdala.Text = "Kasayı Hurdaya Ayır";
-            // 
             // btnIslemeAl
             // 
             this.btnIslemeAl.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnIslemeAl.ImageOptions.Image")));
@@ -387,6 +388,7 @@
             this.txtHataliUrun.Name = "txtHataliUrun";
             this.txtHataliUrun.Size = new System.Drawing.Size(71, 20);
             this.txtHataliUrun.TabIndex = 11;
+            this.txtHataliUrun.Click += new System.EventHandler(this.Txt_Click);
             // 
             // labelControl4
             // 
@@ -405,6 +407,7 @@
             this.txtIstenilenAdet.Size = new System.Drawing.Size(71, 20);
             this.txtIstenilenAdet.TabIndex = 9;
             this.txtIstenilenAdet.EditValueChanged += new System.EventHandler(this.TxtIstenilenAdet_EditValueChanged);
+            this.txtIstenilenAdet.Click += new System.EventHandler(this.Txt_Click);
             // 
             // labelControl3
             // 
@@ -441,9 +444,9 @@
             this.groupControl5.Appearance.BackColor = System.Drawing.Color.Gainsboro;
             this.groupControl5.Appearance.Options.UseBackColor = true;
             this.groupControl5.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("groupControl5.CaptionImageOptions.Image")));
-            this.groupControl5.Controls.Add(this.labelControl15);
-            this.groupControl5.Controls.Add(this.labelControl14);
-            this.groupControl5.Controls.Add(this.labelControl13);
+            this.groupControl5.Controls.Add(this.lblShowAdet);
+            this.groupControl5.Controls.Add(this.lblShowProductName);
+            this.groupControl5.Controls.Add(this.lblShowProductCode);
             this.groupControl5.Controls.Add(this.labelControl12);
             this.groupControl5.Controls.Add(this.labelControl7);
             this.groupControl5.Controls.Add(this.labelControl11);
@@ -453,35 +456,35 @@
             this.groupControl5.TabIndex = 16;
             this.groupControl5.Text = "Seçilen Reçete Bilgileri";
             // 
-            // labelControl15
+            // lblShowAdet
             // 
-            this.labelControl15.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl15.Appearance.Options.UseFont = true;
-            this.labelControl15.Location = new System.Drawing.Point(126, 112);
-            this.labelControl15.Name = "labelControl15";
-            this.labelControl15.Size = new System.Drawing.Size(15, 16);
-            this.labelControl15.TabIndex = 16;
-            this.labelControl15.Text = "---";
+            this.lblShowAdet.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.lblShowAdet.Appearance.Options.UseFont = true;
+            this.lblShowAdet.Location = new System.Drawing.Point(126, 112);
+            this.lblShowAdet.Name = "lblShowAdet";
+            this.lblShowAdet.Size = new System.Drawing.Size(15, 16);
+            this.lblShowAdet.TabIndex = 16;
+            this.lblShowAdet.Text = "---";
             // 
-            // labelControl14
+            // lblShowProductName
             // 
-            this.labelControl14.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl14.Appearance.Options.UseFont = true;
-            this.labelControl14.Location = new System.Drawing.Point(126, 75);
-            this.labelControl14.Name = "labelControl14";
-            this.labelControl14.Size = new System.Drawing.Size(15, 16);
-            this.labelControl14.TabIndex = 16;
-            this.labelControl14.Text = "---";
+            this.lblShowProductName.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.lblShowProductName.Appearance.Options.UseFont = true;
+            this.lblShowProductName.Location = new System.Drawing.Point(126, 75);
+            this.lblShowProductName.Name = "lblShowProductName";
+            this.lblShowProductName.Size = new System.Drawing.Size(15, 16);
+            this.lblShowProductName.TabIndex = 16;
+            this.lblShowProductName.Text = "---";
             // 
-            // labelControl13
+            // lblShowProductCode
             // 
-            this.labelControl13.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.labelControl13.Appearance.Options.UseFont = true;
-            this.labelControl13.Location = new System.Drawing.Point(126, 39);
-            this.labelControl13.Name = "labelControl13";
-            this.labelControl13.Size = new System.Drawing.Size(15, 16);
-            this.labelControl13.TabIndex = 16;
-            this.labelControl13.Text = "---";
+            this.lblShowProductCode.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblShowProductCode.Appearance.Options.UseFont = true;
+            this.lblShowProductCode.Location = new System.Drawing.Point(126, 39);
+            this.lblShowProductCode.Name = "lblShowProductCode";
+            this.lblShowProductCode.Size = new System.Drawing.Size(15, 16);
+            this.lblShowProductCode.TabIndex = 16;
+            this.lblShowProductCode.Text = "---";
             // 
             // labelControl12
             // 
@@ -513,15 +516,6 @@
             this.labelControl11.TabIndex = 15;
             this.labelControl11.Text = "Malzeme Kodu:";
             // 
-            // lblSistemDurumu
-            // 
-            this.lblSistemDurumu.AutoSize = true;
-            this.lblSistemDurumu.Location = new System.Drawing.Point(574, 23);
-            this.lblSistemDurumu.Name = "lblSistemDurumu";
-            this.lblSistemDurumu.Size = new System.Drawing.Size(78, 13);
-            this.lblSistemDurumu.TabIndex = 2;
-            this.lblSistemDurumu.Text = "Sistem Durumu";
-            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -540,7 +534,7 @@
             this.groupControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtProductName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtProductCode.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwRecipe)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
@@ -548,7 +542,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.stateConnectComponent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cbxSelecetedRecipe.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
             this.groupControl4.PerformLayout();
@@ -566,7 +559,6 @@
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private DevExpress.XtraEditors.GroupControl groupControl3;
-        private DevExpress.XtraEditors.ComboBoxEdit cbxSelecetedRecipe;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton btnStop;
         private DevExpress.XtraEditors.SimpleButton btnStart;
@@ -576,11 +568,10 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.TextEdit txtIstenilenAdet;
         private DevExpress.XtraEditors.LabelControl labelControl3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgwRecipe;
         private DevExpress.XtraEditors.SimpleButton btnIslemeAl;
         private DevExpress.XtraEditors.TextEdit txtHataliUrun;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.SimpleButton btnHurdala;
         private DevExpress.XtraGauges.Win.GaugeControl gaugeControl1;
         private DevExpress.XtraGauges.Win.Gauges.State.StateIndicatorGauge stateIndicatorGauge1;
         private DevExpress.XtraGauges.Win.Gauges.State.StateIndicatorComponent stateConnectComponent;
@@ -599,10 +590,11 @@
         private DevExpress.XtraEditors.LabelControl labelControl12;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.LabelControl labelControl11;
-        private DevExpress.XtraEditors.LabelControl labelControl15;
-        private DevExpress.XtraEditors.LabelControl labelControl14;
-        private DevExpress.XtraEditors.LabelControl labelControl13;
+        private DevExpress.XtraEditors.LabelControl lblShowAdet;
+        private DevExpress.XtraEditors.LabelControl lblShowProductName;
+        private DevExpress.XtraEditors.LabelControl lblShowProductCode;
         private System.Windows.Forms.Label lblSistemDurumu;
+        private System.Windows.Forms.ComboBox cbxSelectRecipe;
     }
 }
 

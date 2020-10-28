@@ -15,10 +15,10 @@ namespace StoklamaBandi.EntityFramework.DataAccess
 {
     public class ProductDal : IRepositoryBase 
     {
-        //ProductModel _product;
+        
         public ProductDal()
         {
-            CreateDatabase();
+            
         }
 
         public void Add(ProductModel productModel)
@@ -76,20 +76,6 @@ namespace StoklamaBandi.EntityFramework.DataAccess
                 context.SaveChanges();
                 
             }
-        }
-
-        public void CreateDatabase()
-        {
-            
-            using (var context = new MyContext())
-            {
-                //if (!context.Database.Exists())
-                //{
-                    context.Database.Create();
-                //}
-                
-            }
-
         }
 
     }

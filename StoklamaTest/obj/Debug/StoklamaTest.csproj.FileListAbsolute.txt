@@ -108,3 +108,4 @@ C:\GitHub\StoklamaBandi\StoklamaTest\bin\Debug\Newtonsoft.Json.dll
 C:\GitHub\StoklamaBandi\StoklamaTest\bin\Debug\SharpModbus.dll
 C:\GitHub\StoklamaBandi\StoklamaTest\bin\Debug\SharpSerial.exe
 C:\GitHub\StoklamaBandi\StoklamaTest\bin\Debug\Newtonsoft.Json.xml
+C:\GitHub\StoklamaBandi\StoklamaTest\obj\Debug\StoklamaTest.csproj.CoreCompileInputs.cache

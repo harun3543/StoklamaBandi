@@ -13,6 +13,7 @@ using System.Threading;
 using StoklamaBandi.Manager;
 using StoklamaBandi.EntityFramework.DataAccess;
 using StoklamaBandi.EntityFramework.Entity;
+using DevExpress;
 
 namespace StoklamaBandi
 {
@@ -20,13 +21,13 @@ namespace StoklamaBandi
     public partial class Form1 : Form
     {
         ModbusManager modbusManager;
-        PortManager portManager;
+        ProductModel _product;
         ProductDal productDal;
         FileStream fsSettings;
         StreamReader streader;
-        Thread  ThReadContinuous, ThWriteContinuous, ThState;
-        string _serialPortName;
-        
+        Thread ThReadContinuous, ThWriteContinuous, ThState;
+        string _serialPortName, returnId;
+
         int[] mw;
         string sIstenilenAdet;
         bool startStopBit = false;
@@ -41,20 +42,20 @@ namespace StoklamaBandi
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //portManager = new PortManager();
             modbusManager = new ModbusManager();
-            //CreateModbusManager();
-            CreateThread();
-            ThState.Start();
             productDal = new ProductDal();
+            CreateThread();
+            LoadProduct();
+            ThState.Start();
+
         }
-        private void CreatePort()
+        private void LoadProduct()
         {
-            if (!readSettingFlag)
-            {
-                portManager.CreatePort(_serialPortName, 9600, 1, 8);
-                portManager.SerialPortOpen();
-            }
+            var productList = productDal.GetAll();
+            dgwRecipe.DataSource = productList;
+            cbxSelectRecipe.DataSource = productList;
+            cbxSelectRecipe.DisplayMember = "ProductCode";
+            cbxSelectRecipe.ValueMember = "ProductID";
         }
 
         private void CreateModbusManager()
@@ -128,17 +129,17 @@ namespace StoklamaBandi
                     ButtonLock();
                     //OnStart();
                 }
-                
+
                 mw = modbusManager.ReadSingleWord(10);
                 lblSayilanAdet.Text = Convert.ToString(mw);
             }
             catch (Exception e)
             {
                 ThreadStop();
-                ButtonUnlock(); 
+                ButtonUnlock();
                 lblSistemDurumu.Text = e.Message;
             }
-            
+
             Thread.Sleep(100);
         }
 
@@ -154,12 +155,12 @@ namespace StoklamaBandi
             MessageBox.Show("PLC ile bağlantı koptu.");
         }
         #endregion
-        
+
         #region Buton Kontrolleri 
         private void BtnConnect_Click(object sender, EventArgs e)
         {
             ThReadContinuous.Start();
-            //ThWriteContinuous.Start();
+            ThWriteContinuous.Start();
         }
         private void BtnStart_Click(object sender, EventArgs e)
         {
@@ -168,21 +169,41 @@ namespace StoklamaBandi
         private void BtnStop_Click(object sender, EventArgs e)
         {
             startStopBit = false;
-           
+
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            productDal.Add(new ProductModel { ProductCode = "ad" });
+            productDal.Add(new ProductModel
+            {
+                ProductCode = txtProductCode.Text,
+                ProductName = txtProductName.Text
+            });
+            LoadProduct();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            productDal.Update(new ProductModel
+            {
+                ProductID = Convert.ToInt32(returnId),
+                ProductCode = txtProductCode.Text,
+                ProductName = txtProductName.Text
+            });
+            LoadProduct();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            productDal.Delete(new ProductModel
+            {
+                ProductID = Convert.ToInt32(returnId)
+            });
+            LoadProduct();
         }
         private void ButtonLock()
         {
             btnConnect.Enabled = false;
-        }
-
-        private void TxtIstenilenAdet_EditValueChanged(object sender, EventArgs e)
-        {
-            sIstenilenAdet = txtIstenilenAdet.Text;
         }
 
         private void ButtonUnlock()
@@ -190,6 +211,49 @@ namespace StoklamaBandi
             btnConnect.Enabled = true;
         }
         #endregion
+
+        #region Event işlemleri
+        private void dgwRecipe_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            returnId = dgwRecipe.CurrentRow.Cells[0].Value.ToString();
+            txtProductCode.Text = dgwRecipe.CurrentRow.Cells[1].Value.ToString();
+            txtProductName.Text = dgwRecipe.CurrentRow.Cells[2].Value.ToString();
+        }
+
+        private void cbxSelectRecipe_IndexChanged(object sender, EventArgs e)
+        {
+            var result = (ProductModel)cbxSelectRecipe.SelectedItem;
+            var product = productDal.GetDetails(result.ProductID);
+            lblShowProductCode.Text = product.ProductCode;
+            lblShowProductName.Text = product.ProductName;
+
+        }
+        private void TxtIstenilenAdet_EditValueChanged(object sender, EventArgs e)
+        {
+            sIstenilenAdet = txtIstenilenAdet.Text;
+            lblShowAdet.Text = txtIstenilenAdet.Text;
+        }
+
+        private void Txt_Click(object sender, EventArgs e)
+        {
+            DevExpress.XtraEditors.TextEdit textBox = (DevExpress.XtraEditors.TextEdit)sender;
+            textBox.Text = ShowKeybord();
+        }
+        #endregion
+
+        private string ShowKeybord()
+        {
+            string result1 = "";
+            using (var userKeybord = new UserKeybord())
+            {
+                var result = userKeybord.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    result1 = userKeybord.ReturnString;
+                }
+            }
+            return result1;
+        }
 
         private void ModbusClientConnect_State()
         {

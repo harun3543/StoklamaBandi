@@ -256,3 +256,6 @@ C:\GitHub\StoklamaBandi\StoklamaBandi\bin\Debug\ja\DevExpress.Diagram.v20.1.Core
 C:\GitHub\StoklamaBandi\StoklamaBandi\bin\Debug\ru\DevExpress.Diagram.v20.1.Core.resources.dll
 C:\GitHub\StoklamaBandi\StoklamaBandi\obj\Debug\PrintTest.FrmPrint.resources
 C:\GitHub\StoklamaBandi\StoklamaBandi\obj\Debug\PrintTest.Report1.resources
+C:\GitHub\StoklamaBandi\StoklamaBandi\obj\Debug\StoklamaBandi.csprojAssemblyReference.cache
+C:\GitHub\StoklamaBandi\StoklamaBandi\obj\Debug\StoklamaBandi.csproj.CoreCompileInputs.cache
+C:\GitHub\StoklamaBandi\StoklamaBandi\obj\Debug\StoklamaBandi.UserKeybord.resources

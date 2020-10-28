@@ -15,6 +15,7 @@ namespace StoklamaBandi.EntityFramework.Entity
         [Key]
         public int ProductID { get; set; }
         public string ProductCode { get; set; }
+        public string ProductName { get; set; }
         //public string ProductDate { get; set; }
 
     }

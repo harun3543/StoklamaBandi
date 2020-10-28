@@ -14,9 +14,8 @@ namespace StoklamaBandi
     public partial class UserKeybord : Form 
     {
         string _textString;
-        Form1 _form1;
-
         public string ReturnString {get;set;}
+        public string setString { get; set; }
 
         public UserKeybord()
         {
@@ -28,6 +27,7 @@ namespace StoklamaBandi
         {
             //_form1 = new Form1();
             this.Show();
+            txtString.Text = setString;
         }
 
         private void btn_Click(object sender, EventArgs e)
@@ -43,20 +43,17 @@ namespace StoklamaBandi
 
         private void btnKaydet(object sender, EventArgs e)
         {
-            returnString();
-            this.ReturnString = _textString;
+            
+            this.ReturnString = txtString.Text;
             this.DialogResult = DialogResult.OK;
             FrmClose();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            this.ReturnString = setString;
+            this.DialogResult = DialogResult.OK;
             FrmClose();
-        }
-
-        public void returnString()
-        {
-            _textString = txtString.Text;
         }
 
         private void FrmClose()
@@ -68,7 +65,6 @@ namespace StoklamaBandi
         {
            
         }
-
 
     }
 }

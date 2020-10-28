@@ -236,16 +236,17 @@ namespace StoklamaBandi
 
         private void Txt_Click(object sender, EventArgs e)
         {
-            DevExpress.XtraEditors.TextEdit textBox = (DevExpress.XtraEditors.TextEdit)sender;
-            textBox.Text = ShowKeybord();
+            DevExpress.XtraEditors.TextEdit otextBox = (DevExpress.XtraEditors.TextEdit)sender;
+            otextBox.Text = ShowKeybord(otextBox.Text);
         }
         #endregion
 
-        private string ShowKeybord()
+        private string ShowKeybord(string str)
         {
             string result1 = "";
             using (var userKeybord = new UserKeybord())
             {
+                userKeybord.setString = str;
                 var result = userKeybord.ShowDialog();
                 if (result == DialogResult.OK)
                 {

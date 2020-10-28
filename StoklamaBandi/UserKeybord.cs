@@ -21,6 +21,7 @@ namespace StoklamaBandi
         {
             InitializeComponent();
             this.Load += FrmLoad; 
+            
         }
 
         private void FrmLoad(object sender, EventArgs e)

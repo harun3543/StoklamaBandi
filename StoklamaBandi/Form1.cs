@@ -14,6 +14,7 @@ using StoklamaBandi.Manager;
 using StoklamaBandi.EntityFramework.DataAccess;
 using StoklamaBandi.EntityFramework.Entity;
 using DevExpress;
+using StoklamaBandi.Printer;
 
 namespace StoklamaBandi
 {
@@ -21,8 +22,9 @@ namespace StoklamaBandi
     public partial class Form1 : Form
     {
         ModbusManager modbusManager;
-        ProductModel _product;
+        PrinterHelper printer;
         ProductDal productDal;
+        List<PrintModel> modelList;
         FileStream fsSettings;
         StreamReader streader;
         Thread ThReadContinuous, ThWriteContinuous, ThState;
@@ -44,6 +46,8 @@ namespace StoklamaBandi
         {
             modbusManager = new ModbusManager();
             productDal = new ProductDal();
+            printer = new PrinterHelper();
+            modelList = new List<PrintModel>();
             CreateThread();
             LoadProduct();
             ThState.Start();
@@ -210,6 +214,60 @@ namespace StoklamaBandi
         {
             btnConnect.Enabled = true;
         }
+
+        private void btnShowDesigner_Click(object sender, EventArgs e)
+        {
+            modelList.Clear();
+            var code = lblShowProductCode.Text;
+            var name = lblShowProductName.Text;
+            var barcode = lblShowProductCode.Text + lblShowProductName.Text + txtIstenilenAdet.Text;
+            var adet = Convert.ToInt32(txtIstenilenAdet.Text);
+            modelList.Add(new PrintModel
+            {
+                MalzemeKodu = code,
+                MalzemeAdi = name,
+                Miktar = adet,
+                Barkod = barcode
+            });
+            //var model1 = printer.GetDatasource(code, name, adet, barcode);
+            printer.ShowDesigner(modelList);
+        }
+
+        private void btnShowPreview_Click(object sender, EventArgs e)
+        {
+            modelList.Clear();
+            var code = lblShowProductCode.Text;
+            var name = lblShowProductName.Text;
+            var barcode = lblShowProductCode.Text + lblShowProductName.Text + txtIstenilenAdet.Text;
+            var adet = Convert.ToInt32(txtIstenilenAdet.Text);
+            modelList.Add(new PrintModel
+            {
+                MalzemeKodu = code,
+                MalzemeAdi = name,
+                Miktar = adet,
+                Barkod = barcode
+            });
+
+            printer.ShowPreview(modelList);
+        }
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            modelList.Clear();
+            var code = lblShowProductCode.Text;
+            var name = lblShowProductName.Text;
+            var barcode = lblShowProductCode.Text + lblShowProductName.Text + txtIstenilenAdet.Text;
+            var adet = Convert.ToInt32(txtIstenilenAdet.Text);
+            modelList.Add(new PrintModel
+            {
+                MalzemeKodu = code,
+                MalzemeAdi = name,
+                Miktar = adet,
+                Barkod = barcode
+            });
+
+            printer.Print(modelList);
+        }
+
         #endregion
 
         #region Event işlemleri
@@ -233,6 +291,8 @@ namespace StoklamaBandi
             sIstenilenAdet = txtIstenilenAdet.Text;
             lblShowAdet.Text = txtIstenilenAdet.Text;
         }
+
+
 
         private void Txt_Click(object sender, EventArgs e)
         {

@@ -34,6 +34,7 @@
             DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState3 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
             DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState4 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.btnShowDesigner = new DevExpress.XtraEditors.SimpleButton();
             this.btnUpdate = new DevExpress.XtraEditors.SimpleButton();
             this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
@@ -72,6 +73,8 @@
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.btnPreviewPrint = new DevExpress.XtraEditors.SimpleButton();
+            this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtProductName.Properties)).BeginInit();
@@ -95,6 +98,9 @@
             // groupControl1
             // 
             this.groupControl1.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("groupControl1.CaptionImageOptions.Image")));
+            this.groupControl1.Controls.Add(this.btnPrint);
+            this.groupControl1.Controls.Add(this.btnPreviewPrint);
+            this.groupControl1.Controls.Add(this.btnShowDesigner);
             this.groupControl1.Controls.Add(this.btnUpdate);
             this.groupControl1.Controls.Add(this.btnDelete);
             this.groupControl1.Controls.Add(this.btnSave);
@@ -108,6 +114,16 @@
             this.groupControl1.Size = new System.Drawing.Size(1240, 347);
             this.groupControl1.TabIndex = 3;
             this.groupControl1.Text = "Reçete Bilgileri";
+            // 
+            // btnShowDesigner
+            // 
+            this.btnShowDesigner.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnShowDesigner.ImageOptions.Image")));
+            this.btnShowDesigner.Location = new System.Drawing.Point(8, 278);
+            this.btnShowDesigner.Name = "btnShowDesigner";
+            this.btnShowDesigner.Size = new System.Drawing.Size(129, 47);
+            this.btnShowDesigner.TabIndex = 18;
+            this.btnShowDesigner.Text = "Designer Göster";
+            this.btnShowDesigner.Click += new System.EventHandler(this.btnShowDesigner_Click);
             // 
             // btnUpdate
             // 
@@ -516,6 +532,28 @@
             this.labelControl11.TabIndex = 15;
             this.labelControl11.Text = "Malzeme Kodu:";
             // 
+            // btnPreviewPrint
+            // 
+            this.btnPreviewPrint.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image1")));
+            this.btnPreviewPrint.Location = new System.Drawing.Point(143, 278);
+            this.btnPreviewPrint.Name = "btnPreviewPrint";
+            this.btnPreviewPrint.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnPreviewPrint.Size = new System.Drawing.Size(140, 47);
+            this.btnPreviewPrint.TabIndex = 19;
+            this.btnPreviewPrint.Text = "Yazıcı Çıktısını Göster";
+            this.btnPreviewPrint.Click += new System.EventHandler(this.btnShowPreview_Click);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btnPrint.Location = new System.Drawing.Point(289, 278);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnPrint.Size = new System.Drawing.Size(129, 47);
+            this.btnPrint.TabIndex = 20;
+            this.btnPrint.Text = "Yazdır";
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -595,6 +633,9 @@
         private DevExpress.XtraEditors.LabelControl lblShowProductCode;
         private System.Windows.Forms.Label lblSistemDurumu;
         private System.Windows.Forms.ComboBox cbxSelectRecipe;
+        private DevExpress.XtraEditors.SimpleButton btnShowDesigner;
+        private DevExpress.XtraEditors.SimpleButton btnPrint;
+        private DevExpress.XtraEditors.SimpleButton btnPreviewPrint;
     }
 }
 

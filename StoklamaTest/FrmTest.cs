@@ -197,5 +197,11 @@ namespace StoklamaTest
             }
             return result1;
         }
+
+        private void btnShowDesigner_Click(object sender, EventArgs e)
+        {
+            FrmReport frmReport = new FrmReport();
+            frmReport.ShowDialog();
+        }
     }
 }

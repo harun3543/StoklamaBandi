@@ -103,6 +103,9 @@
     </Compile>
     <Compile Include="Manager\ModbusManager.cs" />
     <Compile Include="Manager\PortManager.cs" />
+    <Compile Include="Printer\IPrinterHelper.cs" />
+    <Compile Include="Printer\PrinterHelper.cs" />
+    <Compile Include="Printer\PrintModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report1.cs">

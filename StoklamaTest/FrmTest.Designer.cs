@@ -41,6 +41,7 @@
             this.txtWordValue = new DevExpress.XtraEditors.TextEdit();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnShowDesigner = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.txtCoilRegister.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtWordRegister.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtWordValue.Properties)).BeginInit();
@@ -168,11 +169,22 @@
             this.label1.TabIndex = 14;
             this.label1.Text = "label1";
             // 
+            // btnShowDesigner
+            // 
+            this.btnShowDesigner.Location = new System.Drawing.Point(316, 201);
+            this.btnShowDesigner.Name = "btnShowDesigner";
+            this.btnShowDesigner.Size = new System.Drawing.Size(110, 43);
+            this.btnShowDesigner.TabIndex = 15;
+            this.btnShowDesigner.Text = "Designer Aç";
+            this.btnShowDesigner.UseVisualStyleBackColor = true;
+            this.btnShowDesigner.Click += new System.EventHandler(this.btnShowDesigner_Click);
+            // 
             // FrmTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(438, 256);
+            this.Controls.Add(this.btnShowDesigner);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.txtWordValue);
@@ -211,5 +223,6 @@
         private DevExpress.XtraEditors.TextEdit txtWordValue;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnShowDesigner;
     }
 }

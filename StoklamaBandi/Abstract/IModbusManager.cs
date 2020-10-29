@@ -8,7 +8,7 @@ namespace StoklamaBandi.Abstract
 {
     interface IModbusManager
     {
-       // void CreateClient();
+        void CreateClient(string ip, int port);
         void WriteSingleWord(int registerAdd, int value);
         void WriteSingleInt(int registerAddi, int value);
         int[] ReadSingleWord(int registerAdd);

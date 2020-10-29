@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraReports.UI;
+﻿using DevExpress.XtraPrinting;
+using DevExpress.XtraReports.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,13 @@ namespace StoklamaBandi.Printer
     public class PrinterHelper : IPrinterHelper
     {
         const string layoutPath = @"C:\REPORTBASE\SAYICI_RAPOR.repx";
-        const string printerName = "Argox";
+        const string printerName = "HP DeskJet 5200 series [403D99]";
+        ReportPrintTool printTool;
+
+        public PrinterHelper()
+        {
+            
+        }
         public PrintModel GetDatasource(string malzemekodu, string malzemeadi, int miktar, string barcode)
         {
             var result = new PrintModel
@@ -33,10 +40,11 @@ namespace StoklamaBandi.Printer
         {
             using (XtraReport report = new XtraReport())
             {
-                
+                printTool = new ReportPrintTool(report);
                 report.DataSource = model;
                 report.LoadLayout(layoutPath);
-                report.Print(printerName);
+                printTool.Print(printerName);
+                //report.Print(printerName);
             }
 
         }

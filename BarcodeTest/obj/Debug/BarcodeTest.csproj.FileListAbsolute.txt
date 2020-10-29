@@ -50,3 +50,4 @@ C:\GitHub\StoklamaBandi\BarcodeTest\obj\Debug\BarcodeTest.exe
 C:\GitHub\StoklamaBandi\BarcodeTest\obj\Debug\BarcodeTest.pdb
 C:\GitHub\StoklamaBandi\BarcodeTest\bin\Debug\BarcodeStandard.dll
 C:\GitHub\StoklamaBandi\BarcodeTest\bin\Debug\System.Drawing.Common.dll
+C:\GitHub\StoklamaBandi\BarcodeTest\obj\Debug\BarcodeTest.csproj.CoreCompileInputs.cache

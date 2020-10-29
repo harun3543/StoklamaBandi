@@ -57,6 +57,9 @@ namespace StoklamaBandi
         {
             var productList = productDal.GetAll();
             dgwRecipe.DataSource = productList;
+            dgwRecipe.Columns[0].Visible = false;
+            dgwRecipe.Columns[1].HeaderText = "Malzeme Kodu";
+            dgwRecipe.Columns[2].HeaderText = "Malzeme Adı";
             cbxSelectRecipe.DataSource = productList;
             cbxSelectRecipe.DisplayMember = "ProductCode";
             cbxSelectRecipe.ValueMember = "ProductID";
@@ -168,7 +171,15 @@ namespace StoklamaBandi
         }
         private void BtnStart_Click(object sender, EventArgs e)
         {
-            startStopBit = true;
+            if (txtIstenilenAdet.Text != "")
+            {
+                startStopBit = true;
+            }
+            else
+            {
+                MessageBox.Show("Lütfen Adet miktarını boş bırakmayınız.");
+            }
+
         }
         private void BtnStop_Click(object sender, EventArgs e)
         {
@@ -239,16 +250,20 @@ namespace StoklamaBandi
             var code = lblShowProductCode.Text;
             var name = lblShowProductName.Text;
             var barcode = lblShowProductCode.Text + lblShowProductName.Text + txtIstenilenAdet.Text;
-            var adet = Convert.ToInt32(txtIstenilenAdet.Text);
-            modelList.Add(new PrintModel
+            if (txtIstenilenAdet.Text != "")
             {
-                MalzemeKodu = code,
-                MalzemeAdi = name,
-                Miktar = adet,
-                Barkod = barcode
-            });
+                var adet = Convert.ToInt32(txtIstenilenAdet.Text);
+                modelList.Add(new PrintModel
+                {
+                    MalzemeKodu = code,
+                    MalzemeAdi = name,
+                    Miktar = adet,
+                    Barkod = barcode
+                });
 
-            printer.ShowPreview(modelList);
+                printer.ShowPreview(modelList);
+            }
+
         }
         private void btnPrint_Click(object sender, EventArgs e)
         {
@@ -291,8 +306,6 @@ namespace StoklamaBandi
             sIstenilenAdet = txtIstenilenAdet.Text;
             lblShowAdet.Text = txtIstenilenAdet.Text;
         }
-
-
 
         private void Txt_Click(object sender, EventArgs e)
         {

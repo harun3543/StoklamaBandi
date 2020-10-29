@@ -20,7 +20,8 @@ namespace StoklamaTest
     public partial class FrmTest : DevExpress.XtraEditors.XtraForm
     {
         ModbusClient modbusClient;
-        string selectedPort = "COM1";
+        string _ip = "192.168.12.12";
+        const int _port = 502;
         SerialPort serialport1;
         Thread t;
 
@@ -51,10 +52,10 @@ namespace StoklamaTest
 
             try
             {
-                modbusClient = new ModbusClient(selectedPort);
-                modbusClient.Baudrate = 9600;
-                modbusClient.StopBits = StopBits.One;
-                modbusClient.Parity = Parity.None;
+                modbusClient = new ModbusClient(_ip, _port);
+                //modbusClient.Baudrate = 9600;
+                //modbusClient.StopBits = StopBits.One;
+                //modbusClient.Parity = Parity.None;
                 modbusClient.Connect();
                 //MessageBox.Show("Bağlantı kuruldu");
 
@@ -71,12 +72,12 @@ namespace StoklamaTest
             try
             {
                 
-                modbusClient = new ModbusClient(selectedPort);
-                modbusClient.Baudrate = 9600;
-                modbusClient.StopBits = StopBits.One;
-                modbusClient.Parity = Parity.None;
-                modbusClient.UnitIdentifier = 1;
-                modbusClient.ConnectionTimeout = 1000;
+                modbusClient = new ModbusClient(_ip,_port);
+                //modbusClient.Baudrate = 9600;
+                //modbusClient.StopBits = StopBits.One;
+                //modbusClient.Parity = Parity.None;
+                //modbusClient.UnitIdentifier = 1;
+                //modbusClient.ConnectionTimeout = 1000;
                 modbusClient.ReceiveDataChanged += new ModbusClient.ReceiveDataChangedHandler(ReceviedHandler);
                 modbusClient.Connect();
                 MessageBox.Show("Başarılı bir şekilde bağlandı");
@@ -163,7 +164,7 @@ namespace StoklamaTest
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedPort = comboBox1.Text;
+            //selectedPort = comboBox1.Text;
         }
 
         //private void TestClick(object sender, EventArgs e)

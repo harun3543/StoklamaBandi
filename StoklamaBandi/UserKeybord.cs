@@ -29,6 +29,8 @@ namespace StoklamaBandi
             //_form1 = new Form1();
             this.Show();
             txtString.Text = setString;
+            this.ControlBox = false;
+            this.MaximizeBox = false;
         }
 
         private void btn_Click(object sender, EventArgs e)

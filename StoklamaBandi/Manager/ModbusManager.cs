@@ -9,25 +9,20 @@ using System.Windows.Forms;
 
 namespace StoklamaBandi.Manager
 {
-    public class ModbusManager : IModbusManager
+    public class ModbusManager : IModbusManager,IDisposable
     {
         ModbusClient modbusClient;
         public static bool StStateConnection;
+        const string _ip= "169.254.14.183";  //GMT IP Adres
         const int _port = 502;
         public ModbusManager()
         {
-            CreateClient("192.168.12.13",_port);
-            //modbusClient.ConnectedChanged += new ModbusClient.ConnectedChangedHandler(StateConnection);
+            CreateClient(_ip, _port);
         }
 
         public void CreateClient(string ip, int port)
         {
             modbusClient = new ModbusClient(ip,port);
-            //modbusClient.UnitIdentifier = 1;// Not necessary since default slaveID = 1;
-            //modbusClient.Baudrate = 9600;	// Not necessary since default baudrate = 9600
-            //modbusClient.Parity = System.IO.Ports.Parity.None;
-            //modbusClient.StopBits = System.IO.Ports.StopBits.One;
-            //modbusClient.ConnectionTimeout = 1000;
             modbusClient.ConnectedChanged += new ModbusClient.ConnectedChangedHandler(StateConnection);
             //Connect();
         }
@@ -50,43 +45,50 @@ namespace StoklamaBandi.Manager
             modbusClient.Disconnect();
         }
 
+        public bool[] ReadSingleCoil(int registerAdd)
+        {
+            bool[] mb = modbusClient.ReadCoils(0 + registerAdd, 1);
+            return mb;
+        }
+
         public int[] ReadSingleWord(int registerAdd)
         {
-            int[] mw = modbusClient.ReadHoldingRegisters(40001 + registerAdd, 1);
+            int[] mw = modbusClient.ReadHoldingRegisters(0 + registerAdd, 1);
             return mw;
         }
         public int[] ReadSingleInt(int registerAdd)
         {
-            int[] mi = modbusClient.ReadHoldingRegisters(41001 + registerAdd, 2);
+            int[] mi = modbusClient.ReadHoldingRegisters(1000 + registerAdd, 2);
             return mi;
         }
 
         //***Word değer yazdırma.
         public void WriteSingleWord(int registerAdd, int value)
         {
-            modbusClient.WriteSingleRegister(40001 + registerAdd, value);
+            modbusClient.WriteSingleRegister(0 + registerAdd, value);
         }
 
         //***Int değer yazdırma
         public void WriteSingleInt(int registerAdd, int value)
         {
-            modbusClient.WriteSingleRegister(41001 + registerAdd, value);
+            modbusClient.WriteSingleRegister(1000 + registerAdd, value);
         }
 
         //***Memory bit değeri gönderme.
         public void WriteCoilRegister(int registerAdd, bool bitValue)
         {
-            modbusClient.WriteSingleCoil(00001 + registerAdd, bitValue);
+            modbusClient.WriteSingleCoil(0 + registerAdd, bitValue);
           
         }
 
-        //public virtual void StateConnection(object sender)
-        //{
-        //    StStateConnection = modbusClient.Connected;
-        //}
         private void StateConnection(object sender)
         {
             StStateConnection = modbusClient.Connected;
+        }
+
+        public void Dispose()
+        {
+            
         }
     }
 }

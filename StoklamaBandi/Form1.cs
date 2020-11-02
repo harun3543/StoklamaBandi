@@ -27,13 +27,19 @@ namespace StoklamaBandi
         List<PrintModel> modelList;
         FileStream fsSettings;
         StreamReader streader;
-        Thread ThReadContinuous, ThWriteContinuous, ThState;
         string _serialPortName, returnId;
 
+        const int _istDegerMem = 100;
+        const int _okuDegerMem = 10;
+        const int _startMem = 5;
+        const int _resetMem = 6;
+        const int _resetPiston = 7;
+
         int[] mw;
+        bool[] mb;
         string sIstenilenAdet;
-        bool startStopBit = false;
-        bool readSettingFlag = false;
+        bool startStopBit = false, stopThread = true, resetFlag;
+        bool readSettingFlag = false, flag = false, pistonFlag = false;
 
         public Form1()
         {
@@ -44,13 +50,14 @@ namespace StoklamaBandi
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            modbusManager = new ModbusManager();
             productDal = new ProductDal();
             printer = new PrinterHelper();
             modelList = new List<PrintModel>();
-            CreateThread();
             LoadProduct();
-            ThState.Start();
+            btnSave.Enabled = true;
+            btnUpdate.Enabled = true;
+            btnDelete.Enabled = true;
+            btnResetPiston.Enabled = false;
 
         }
         private void LoadProduct()
@@ -60,121 +67,119 @@ namespace StoklamaBandi
             dgwRecipe.Columns[0].Visible = false;
             dgwRecipe.Columns[1].HeaderText = "Malzeme Kodu";
             dgwRecipe.Columns[2].HeaderText = "Malzeme Adı";
+
             cbxSelectRecipe.DataSource = productList;
             cbxSelectRecipe.DisplayMember = "ProductCode";
             cbxSelectRecipe.ValueMember = "ProductID";
         }
 
-        private void CreateModbusManager()
-        {
-            //ReadSetting();  //COM adresini dosyadan oku
-            //if (!readSettingFlag)
-            //{
-            //}
-
-        }
-
-        #region Read Settings
-        private string ReadSetting()
+        private void tmr1_Tick(object sender, EventArgs e)
         {
             try
             {
-                fsSettings = new FileStream("C:/Users/harun.durmus/Documents/Setiings.txt", FileMode.Open, FileAccess.Read);
-                streader = new StreamReader(fsSettings);
+                ThStateStart();
 
-                _serialPortName = streader.ReadLine();
-
-
-            }
-
-            catch (Exception)
-            {
-                MessageBox.Show("Ayar dosyası yok");
-                readSettingFlag = true;
-            }
-
-            return _serialPortName;
-        }
-        #endregion
-
-        #region Thread Islemleri
-        private void CreateThread()
-        {
-            ThReadContinuous = new Thread(new ThreadStart(ThReadConStart));
-            ThWriteContinuous = new Thread(new ThreadStart(ThWriteConStart));
-            ThState = new Thread(new ThreadStart(ThStateStart));
-
-            Control.CheckForIllegalCrossThreadCalls = false;
-        }
-
-        private void ThWriteConStart()
-        {
-            try
-            {
-                //modbusManager.CreateClient("COM1");
-                modbusManager.Connect();
-                modbusManager.WriteCoilRegister(10, startStopBit);
-
-            }
-            catch (Exception e)
-            {
-                ThreadStop();
-                ButtonUnlock();
-                lblSistemDurumu.Text = e.Message;
-            }
-        }
-
-        private void ThReadConStart()
-        {
-            try
-            {
-                //modbusManager.CreateClient("COM1");
-                modbusManager.Connect();
-
-                if (modbusManager.ModbusIsAvaliable())
+                if (!flag)
                 {
-                    ButtonLock();
-                    //OnStart();
+                    bool[] _mb = modbusManager.ReadSingleCoil(10);
+                    startStopBit = _mb[0];
+                    flag = true;
                 }
 
-                mw = modbusManager.ReadSingleWord(10);
-                lblSayilanAdet.Text = Convert.ToString(mw);
+                mw = modbusManager.ReadSingleWord(_okuDegerMem);
+                lblSayilanAdet.Text = Convert.ToString(mw[0]);
+                mb = modbusManager.ReadSingleCoil(_startMem);
+                modbusManager.WriteCoilRegister(_startMem, startStopBit);
+                modbusManager.WriteCoilRegister(_resetMem, resetFlag);
+                modbusManager.WriteCoilRegister(_resetPiston, pistonFlag);
+                StateSystemRun();
+
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                ThreadStop();
+                TimerStop();
                 ButtonUnlock();
-                lblSistemDurumu.Text = e.Message;
+                MessageBox.Show("PLC ile bağlantı koptu.");
+            }
+        }
+
+        private void StateSystemRun()
+        {
+            if (mb[0] == true)
+            {
+                stateStartStop.StateIndex = 3;
             }
 
-            Thread.Sleep(100);
+            else
+            {
+                stateStartStop.StateIndex = 1;
+            }
         }
 
         private void ThStateStart()
         {
-            ModbusClientConnect_State();
+           // while (true)
+            //{
+                ModbusClientConnect_State();
+            //}
         }
 
-        private void ThreadStop()
+        private void TimerStop()
         {
-            ThReadContinuous.Abort();
-            ThWriteContinuous.Abort();
-            MessageBox.Show("PLC ile bağlantı koptu.");
+            timer1.Stop();
+            modbusManager.Disconnect();
+            stateConnectComponent.StateIndex = 1;
+            stateStartStop.StateIndex = 1;
+            lblSistemDurumu.Text = "Sistem ile bağlantı kesildi.";
+            MessageBox.Show("PLC ile bağlantı kesildi.");
+           
         }
-        #endregion
 
         #region Buton Kontrolleri 
         private void BtnConnect_Click(object sender, EventArgs e)
         {
-            ThReadContinuous.Start();
-            ThWriteContinuous.Start();
+            try
+            {
+                modbusManager = new ModbusManager();
+                modbusManager.Connect();
+                lblSistemDurumu.Text = "Bağlantı Sağlandı.";
+                timer1.Start();
+                if (modbusManager.ModbusIsAvaliable())
+                {
+                    ButtonLock();
+                }
+                btnResetPiston.Enabled = true;
+            }
+            catch (Exception)
+            {
+
+                lblSistemDurumu.Text= "Bağlantı Sağlanamadı.";
+            }
+
         }
+
+        private void btnDisconnect(object sender, EventArgs e)
+        {
+           // modbusManager.Disconnect();
+            //lblSistemDurumu.Text = "Sistem ile bağlantı kesildi.";
+            TimerStop();
+            ButtonUnlock();
+            btnResetPiston.Enabled = false;
+            //stateConnectComponent.StateIndex = 1;
+        }
+
         private void BtnStart_Click(object sender, EventArgs e)
         {
             if (txtIstenilenAdet.Text != "")
             {
                 startStopBit = true;
+                btnSave.Enabled = false;
+                btnUpdate.Enabled = false;
+                btnDelete.Enabled = false;
+                btnMiktarReset.Enabled = false;
+                btnResetPiston.Enabled = false;
             }
+
             else
             {
                 MessageBox.Show("Lütfen Adet miktarını boş bırakmayınız.");
@@ -184,46 +189,111 @@ namespace StoklamaBandi
         private void BtnStop_Click(object sender, EventArgs e)
         {
             startStopBit = false;
+            btnSave.Enabled = true;
+            btnUpdate.Enabled = true;
+            btnDelete.Enabled = true;
+            btnMiktarReset.Enabled = true;
+            btnResetPiston.Enabled = true;
+        }
+
+        private void BtnReset_Click(object sender, EventArgs e)
+        {
+
+            resetFlag = true;
+            //try
+            //{
+            //    using (ModbusManager manager = new ModbusManager())
+            //    {
+            //        manager.Connect();
+            //        manager.WriteSingleWord(_okuDegerMem, 0);
+            //        MessageBox.Show("Sayılan değer sıfırlandı.");
+            //        int[] _mw = manager.ReadSingleWord(_okuDegerMem);
+            //        lblSayilanAdet.Text = Convert.ToString(_mw[0]);
+            //    }
+
+            //} 
+            //catch (Exception)
+            //{
+
+            //    MessageBox.Show("Sıfırlama işlemi gerçekleştirilemedi.");
+            //}
 
         }
 
+        private void BtnResetPiston_Click(object sender, EventArgs e)
+        {
+            pistonFlag = true;
+        }
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            productDal.Add(new ProductModel
+            if (txtProductCode.Text != "" && txtProductName.Text != "")
             {
-                ProductCode = txtProductCode.Text,
-                ProductName = txtProductName.Text
-            });
-            LoadProduct();
+                productDal.Add(new ProductModel
+                {
+                    ProductCode = txtProductCode.Text,
+                    ProductName = txtProductName.Text
+                });
+                LoadProduct();
+            }
+            else
+            {
+                MessageBox.Show("Lütfen malzeme alanlarını boş bırakmayınız.");
+            }
+
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            productDal.Update(new ProductModel
+            try
             {
-                ProductID = Convert.ToInt32(returnId),
-                ProductCode = txtProductCode.Text,
-                ProductName = txtProductName.Text
-            });
-            LoadProduct();
+                productDal.Update(new ProductModel
+                {
+                    ProductID = Convert.ToInt32(returnId),
+                    ProductCode = txtProductCode.Text,
+                    ProductName = txtProductName.Text
+                });
+                LoadProduct();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Lütfen listeden bir ürün seçiniz.");
+            }
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            productDal.Delete(new ProductModel
+            try
             {
-                ProductID = Convert.ToInt32(returnId)
-            });
-            LoadProduct();
+                productDal.Delete(new ProductModel
+                {
+                    ProductID = Convert.ToInt32(returnId)
+                });
+                returnId = "";
+                txtProductCode.Text = "";
+                txtProductName.Text = "";
+                LoadProduct();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Lütfen silinecek malzemeyi listeden seçiniz.");
+            }
+
         }
         private void ButtonLock()
         {
             btnConnect.Enabled = false;
+            
+            //btnMiktarReset.Enabled = false;
         }
 
         private void ButtonUnlock()
         {
             btnConnect.Enabled = true;
+            
+            //btnMiktarReset.Enabled = true;
         }
 
         private void btnShowDesigner_Click(object sender, EventArgs e)
@@ -242,6 +312,7 @@ namespace StoklamaBandi
             });
             //var model1 = printer.GetDatasource(code, name, adet, barcode);
             printer.ShowDesigner(modelList);
+
         }
 
         private void btnShowPreview_Click(object sender, EventArgs e)
@@ -249,7 +320,7 @@ namespace StoklamaBandi
             modelList.Clear();
             var code = lblShowProductCode.Text;
             var name = lblShowProductName.Text;
-            var barcode = lblShowProductCode.Text + lblShowProductName.Text + txtIstenilenAdet.Text;
+            var barcode =  lblShowProductName.Text + lblShowProductCode.Text + txtIstenilenAdet.Text;
             if (txtIstenilenAdet.Text != "")
             {
                 var adet = Convert.ToInt32(txtIstenilenAdet.Text);
@@ -263,24 +334,37 @@ namespace StoklamaBandi
 
                 printer.ShowPreview(modelList);
             }
+            else
+            {
+                MessageBox.Show("Lütfen adet miktrını giriniz.");
+            }
 
         }
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            modelList.Clear();
-            var code = lblShowProductCode.Text;
-            var name = lblShowProductName.Text;
-            var barcode = lblShowProductCode.Text + lblShowProductName.Text + txtIstenilenAdet.Text;
-            var adet = Convert.ToInt32(txtIstenilenAdet.Text);
-            modelList.Add(new PrintModel
+            try
             {
-                MalzemeKodu = code,
-                MalzemeAdi = name,
-                Miktar = adet,
-                Barkod = barcode
-            });
+                modelList.Clear();
+                var code = lblShowProductCode.Text;
+                var name = lblShowProductName.Text;
+                var barcode = lblShowProductCode.Text + lblShowProductName.Text + txtIstenilenAdet.Text;
+                var adet = Convert.ToInt32(txtIstenilenAdet.Text);
+                modelList.Add(new PrintModel
+                {
+                    MalzemeKodu = code,
+                    MalzemeAdi = name,
+                    Miktar = adet,
+                    Barkod = barcode
+                });
 
-            printer.Print(modelList);
+                printer.Print(modelList);
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Yazıcıdan çıktı alınamadı.");
+            }
+
         }
 
         #endregion
@@ -310,7 +394,13 @@ namespace StoklamaBandi
         private void Txt_Click(object sender, EventArgs e)
         {
             DevExpress.XtraEditors.TextEdit otextBox = (DevExpress.XtraEditors.TextEdit)sender;
-            otextBox.Text = ShowKeybord(otextBox.Text);
+            otextBox.Text = ShowCommonKeybord(otextBox.Text);
+        }
+
+        private void TxtNumber_Click(object sender, EventArgs e)
+        {
+            DevExpress.XtraEditors.TextEdit otextBox = (DevExpress.XtraEditors.TextEdit)sender;
+            otextBox.Text = ShowNumberKeybord(otextBox.Text);
         }
         #endregion
 
@@ -329,16 +419,55 @@ namespace StoklamaBandi
             return result1;
         }
 
+        private string ShowCommonKeybord(string str)
+        {
+            string result1 = "";
+            using (var commonKeybord = new CommonKeybord())
+            {
+                commonKeybord.setString = str;
+                var result = commonKeybord.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    result1 = commonKeybord.ReturnString;
+                }
+            }
+            return result1;
+        }
+
+        private string ShowNumberKeybord(string str)
+        {
+            string result1 = "";
+            using (var NumberKeybord = new NumberKeybord())
+            {
+                NumberKeybord.setString = str;
+                var result = NumberKeybord.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    result1 = NumberKeybord.ReturnString;
+                }
+            }
+            return result1;
+        }
+
         private void ModbusClientConnect_State()
         {
-            if (ModbusManager.StStateConnection)
+            try
             {
-                stateConnectComponent.StateIndex = 3;
+                if (ModbusManager.StStateConnection)
+                {
+                    stateConnectComponent.StateIndex = 3;
+                }
+                else
+                {
+                    stateConnectComponent.StateIndex = 1;
+                }
             }
-            else
+            catch (Exception)
             {
-                stateConnectComponent.StateIndex = 1;
+
+
             }
+
         }
     }
 }

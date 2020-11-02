@@ -247,4 +247,3 @@ C:\GitHub\StoklamaBandi\StoklamaTest\bin\Debug\es\DevExpress.Diagram.v20.1.Core.
 C:\GitHub\StoklamaBandi\StoklamaTest\bin\Debug\ja\DevExpress.Diagram.v20.1.Core.resources.dll
 C:\GitHub\StoklamaBandi\StoklamaTest\bin\Debug\ru\DevExpress.Diagram.v20.1.Core.resources.dll
 C:\GitHub\StoklamaBandi\StoklamaTest\obj\Debug\StoklamaTest.FrmReport.resources
-C:\GitHub\StoklamaBandi\StoklamaTest\obj\Debug\StoklamaTest.csproj.CoreCompileInputs.cache

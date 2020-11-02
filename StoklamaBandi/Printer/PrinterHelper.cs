@@ -10,8 +10,8 @@ namespace StoklamaBandi.Printer
 {
     public class PrinterHelper : IPrinterHelper
     {
-        const string layoutPath = @"C:\REPORTBASE\SAYICI_RAPOR.repx";
-        const string printerName = "HP DeskJet 5200 series [403D99]";
+        const string layoutPath = @"C:\REPORTBASE\SAYICI_RAPOR_YENI.repx";
+        const string printerName = "Argox OS-214 plus series PPLA";
         ReportPrintTool printTool;
 
         public PrinterHelper()
@@ -38,8 +38,7 @@ namespace StoklamaBandi.Printer
 
         public void Print(List<PrintModel> model)
         {
-            using (XtraReport report = new XtraReport())
-            {
+            using (XtraReport report = new XtraReport())          {
                 printTool = new ReportPrintTool(report);
                 report.DataSource = model;
                 report.LoadLayout(layoutPath);

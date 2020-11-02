@@ -258,4 +258,5 @@ C:\GitHub\StoklamaBandi\StoklamaBandi\obj\Debug\PrintTest.FrmPrint.resources
 C:\GitHub\StoklamaBandi\StoklamaBandi\obj\Debug\PrintTest.Report1.resources
 C:\GitHub\StoklamaBandi\StoklamaBandi\obj\Debug\StoklamaBandi.csprojAssemblyReference.cache
 C:\GitHub\StoklamaBandi\StoklamaBandi\obj\Debug\StoklamaBandi.UserKeybord.resources
-C:\GitHub\StoklamaBandi\StoklamaBandi\obj\Debug\StoklamaBandi.csproj.CoreCompileInputs.cache
+C:\GitHub\StoklamaBandi\StoklamaBandi\obj\Debug\StoklamaBandi.NumberKeybord.resources
+C:\GitHub\StoklamaBandi\StoklamaBandi\obj\Debug\StoklamaBandi.CommonKeybord.resources

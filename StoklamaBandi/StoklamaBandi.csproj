@@ -85,6 +85,12 @@
     <Compile Include="Abstract\IRepositoryBase.cs" />
     <Compile Include="Abstract\IEntity.cs" />
     <Compile Include="Abstract\IModbusManager.cs" />
+    <Compile Include="CommonKeybord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CommonKeybord.Designer.cs">
+      <DependentUpon>CommonKeybord.cs</DependentUpon>
+    </Compile>
     <Compile Include="EntityFramework\Context\MyContext.cs" />
     <Compile Include="EntityFramework\DataAccess\ProductDal.cs" />
     <Compile Include="EntityFramework\Entity\DataGridModel.cs" />
@@ -103,6 +109,12 @@
     </Compile>
     <Compile Include="Manager\ModbusManager.cs" />
     <Compile Include="Manager\PortManager.cs" />
+    <Compile Include="NumberKeybord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NumberKeybord.Designer.cs">
+      <DependentUpon>NumberKeybord.cs</DependentUpon>
+    </Compile>
     <Compile Include="Printer\IPrinterHelper.cs" />
     <Compile Include="Printer\PrinterHelper.cs" />
     <Compile Include="Printer\PrintModel.cs" />
@@ -120,11 +132,17 @@
     <Compile Include="UserKeybord.Designer.cs">
       <DependentUpon>UserKeybord.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CommonKeybord.resx">
+      <DependentUpon>CommonKeybord.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrint.resx">
       <DependentUpon>FrmPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NumberKeybord.resx">
+      <DependentUpon>NumberKeybord.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

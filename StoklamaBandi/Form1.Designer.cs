@@ -30,14 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState1 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState2 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState3 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState4 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState5 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState6 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState7 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState8 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState9 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState10 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState11 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState12 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState13 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState14 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState15 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState16 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
             this.btnPreviewPrint = new DevExpress.XtraEditors.SimpleButton();
@@ -135,6 +135,8 @@
             // 
             // btnPreviewPrint
             // 
+            this.btnPreviewPrint.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnPreviewPrint.Appearance.Options.UseFont = true;
             this.btnPreviewPrint.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPreviewPrint.ImageOptions.Image")));
             this.btnPreviewPrint.Location = new System.Drawing.Point(157, 262);
             this.btnPreviewPrint.Name = "btnPreviewPrint";
@@ -308,26 +310,26 @@
             this.stateConnectComponent.Name = "stateIndicatorComponent1";
             this.stateConnectComponent.Size = new System.Drawing.SizeF(200F, 200F);
             this.stateConnectComponent.StateIndex = 1;
-            ındicatorState1.Name = "State1";
-            ındicatorState1.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight1;
-            ındicatorState2.Name = "State2";
-            ındicatorState2.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight2;
-            ındicatorState3.Name = "State3";
-            ındicatorState3.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight3;
-            ındicatorState4.Name = "State4";
-            ındicatorState4.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight4;
+            ındicatorState9.Name = "State1";
+            ındicatorState9.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight1;
+            ındicatorState10.Name = "State2";
+            ındicatorState10.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight2;
+            ındicatorState11.Name = "State3";
+            ındicatorState11.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight3;
+            ındicatorState12.Name = "State4";
+            ındicatorState12.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight4;
             this.stateConnectComponent.States.AddRange(new DevExpress.XtraGauges.Core.Model.IIndicatorState[] {
-            ındicatorState1,
-            ındicatorState2,
-            ındicatorState3,
-            ındicatorState4});
+            ındicatorState9,
+            ındicatorState10,
+            ındicatorState11,
+            ındicatorState12});
             // 
             // btnConnect
             // 
             this.btnConnect.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.btnConnect.Appearance.Options.UseFont = true;
             this.btnConnect.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnConnect.ImageOptions.Image")));
-            this.btnConnect.Location = new System.Drawing.Point(8, 31);
+            this.btnConnect.Location = new System.Drawing.Point(0, 33);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(180, 68);
             this.btnConnect.TabIndex = 0;
@@ -352,6 +354,8 @@
             // 
             // btnResetPiston
             // 
+            this.btnResetPiston.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnResetPiston.Appearance.Options.UseFont = true;
             this.btnResetPiston.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnResetPiston.ImageOptions.Image")));
             this.btnResetPiston.Location = new System.Drawing.Point(208, 39);
             this.btnResetPiston.Name = "btnResetPiston";
@@ -364,7 +368,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(5, 199);
+            this.label3.Location = new System.Drawing.Point(5, 213);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(179, 19);
             this.label3.TabIndex = 5;
@@ -372,6 +376,8 @@
             // 
             // btnStop
             // 
+            this.btnStop.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnStop.Appearance.Options.UseFont = true;
             this.btnStop.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnStop.ImageOptions.Image")));
             this.btnStop.Location = new System.Drawing.Point(5, 116);
             this.btnStop.Name = "btnStop";
@@ -403,22 +409,24 @@
             this.stateStartStop.Name = "stateIndicatorComponent1";
             this.stateStartStop.Size = new System.Drawing.SizeF(200F, 200F);
             this.stateStartStop.StateIndex = 1;
-            ındicatorState5.Name = "State1";
-            ındicatorState5.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight1;
-            ındicatorState6.Name = "State2";
-            ındicatorState6.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight2;
-            ındicatorState7.Name = "State3";
-            ındicatorState7.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight3;
-            ındicatorState8.Name = "State4";
-            ındicatorState8.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight4;
+            ındicatorState13.Name = "State1";
+            ındicatorState13.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight1;
+            ındicatorState14.Name = "State2";
+            ındicatorState14.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight2;
+            ındicatorState15.Name = "State3";
+            ındicatorState15.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight3;
+            ındicatorState16.Name = "State4";
+            ındicatorState16.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight4;
             this.stateStartStop.States.AddRange(new DevExpress.XtraGauges.Core.Model.IIndicatorState[] {
-            ındicatorState5,
-            ındicatorState6,
-            ındicatorState7,
-            ındicatorState8});
+            ındicatorState13,
+            ındicatorState14,
+            ındicatorState15,
+            ındicatorState16});
             // 
             // btnStart
             // 
+            this.btnStart.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnStart.Appearance.Options.UseFont = true;
             this.btnStart.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnStart.ImageOptions.Image")));
             this.btnStart.Location = new System.Drawing.Point(8, 39);
             this.btnStart.Name = "btnStart";
@@ -458,9 +466,9 @@
             // btnMiktarReset
             // 
             this.btnMiktarReset.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnMiktarReset.ImageOptions.Image")));
-            this.btnMiktarReset.Location = new System.Drawing.Point(239, 91);
+            this.btnMiktarReset.Location = new System.Drawing.Point(242, 82);
             this.btnMiktarReset.Name = "btnMiktarReset";
-            this.btnMiktarReset.Size = new System.Drawing.Size(110, 37);
+            this.btnMiktarReset.Size = new System.Drawing.Size(123, 51);
             this.btnMiktarReset.TabIndex = 17;
             this.btnMiktarReset.Text = "Miktarı Resetle";
             this.btnMiktarReset.Click += new System.EventHandler(this.BtnReset_Click);

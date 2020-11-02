@@ -260,3 +260,4 @@ C:\GitHub\StoklamaBandi\StoklamaBandi\obj\Debug\StoklamaBandi.csprojAssemblyRefe
 C:\GitHub\StoklamaBandi\StoklamaBandi\obj\Debug\StoklamaBandi.UserKeybord.resources
 C:\GitHub\StoklamaBandi\StoklamaBandi\obj\Debug\StoklamaBandi.NumberKeybord.resources
 C:\GitHub\StoklamaBandi\StoklamaBandi\obj\Debug\StoklamaBandi.CommonKeybord.resources
+C:\GitHub\StoklamaBandi\StoklamaBandi\obj\Debug\StoklamaBandi.csproj.CoreCompileInputs.cache

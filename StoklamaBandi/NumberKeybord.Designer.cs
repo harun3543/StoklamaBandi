@@ -49,7 +49,7 @@
             // 
             this.btnDokuz.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.btnDokuz.Appearance.Options.UseFont = true;
-            this.btnDokuz.Location = new System.Drawing.Point(144, 39);
+            this.btnDokuz.Location = new System.Drawing.Point(144, 45);
             this.btnDokuz.Name = "btnDokuz";
             this.btnDokuz.Size = new System.Drawing.Size(60, 60);
             this.btnDokuz.TabIndex = 0;
@@ -60,7 +60,7 @@
             // 
             this.btnSekiz.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.btnSekiz.Appearance.Options.UseFont = true;
-            this.btnSekiz.Location = new System.Drawing.Point(78, 39);
+            this.btnSekiz.Location = new System.Drawing.Point(78, 45);
             this.btnSekiz.Name = "btnSekiz";
             this.btnSekiz.Size = new System.Drawing.Size(60, 60);
             this.btnSekiz.TabIndex = 1;
@@ -71,7 +71,7 @@
             // 
             this.btnBackSpace.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.btnBackSpace.Appearance.Options.UseFont = true;
-            this.btnBackSpace.Location = new System.Drawing.Point(243, 39);
+            this.btnBackSpace.Location = new System.Drawing.Point(243, 45);
             this.btnBackSpace.Name = "btnBackSpace";
             this.btnBackSpace.Size = new System.Drawing.Size(123, 56);
             this.btnBackSpace.TabIndex = 10;
@@ -82,7 +82,7 @@
             // 
             this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Location = new System.Drawing.Point(12, 39);
+            this.simpleButton1.Location = new System.Drawing.Point(12, 45);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(60, 60);
             this.simpleButton1.TabIndex = 1;
@@ -93,7 +93,7 @@
             // 
             this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.simpleButton2.Appearance.Options.UseFont = true;
-            this.simpleButton2.Location = new System.Drawing.Point(144, 105);
+            this.simpleButton2.Location = new System.Drawing.Point(144, 111);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(60, 60);
             this.simpleButton2.TabIndex = 0;
@@ -104,7 +104,7 @@
             // 
             this.simpleButton3.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.simpleButton3.Appearance.Options.UseFont = true;
-            this.simpleButton3.Location = new System.Drawing.Point(78, 105);
+            this.simpleButton3.Location = new System.Drawing.Point(78, 111);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(60, 60);
             this.simpleButton3.TabIndex = 1;
@@ -115,7 +115,7 @@
             // 
             this.simpleButton4.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.simpleButton4.Appearance.Options.UseFont = true;
-            this.simpleButton4.Location = new System.Drawing.Point(12, 105);
+            this.simpleButton4.Location = new System.Drawing.Point(12, 111);
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(60, 60);
             this.simpleButton4.TabIndex = 1;
@@ -126,7 +126,7 @@
             // 
             this.simpleButton5.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.simpleButton5.Appearance.Options.UseFont = true;
-            this.simpleButton5.Location = new System.Drawing.Point(144, 171);
+            this.simpleButton5.Location = new System.Drawing.Point(144, 177);
             this.simpleButton5.Name = "simpleButton5";
             this.simpleButton5.Size = new System.Drawing.Size(60, 60);
             this.simpleButton5.TabIndex = 0;
@@ -137,7 +137,7 @@
             // 
             this.simpleButton6.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.simpleButton6.Appearance.Options.UseFont = true;
-            this.simpleButton6.Location = new System.Drawing.Point(78, 171);
+            this.simpleButton6.Location = new System.Drawing.Point(78, 177);
             this.simpleButton6.Name = "simpleButton6";
             this.simpleButton6.Size = new System.Drawing.Size(60, 60);
             this.simpleButton6.TabIndex = 1;
@@ -148,7 +148,7 @@
             // 
             this.simpleButton7.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.simpleButton7.Appearance.Options.UseFont = true;
-            this.simpleButton7.Location = new System.Drawing.Point(12, 171);
+            this.simpleButton7.Location = new System.Drawing.Point(12, 177);
             this.simpleButton7.Name = "simpleButton7";
             this.simpleButton7.Size = new System.Drawing.Size(60, 60);
             this.simpleButton7.TabIndex = 1;
@@ -159,7 +159,7 @@
             // 
             this.simpleButton8.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.simpleButton8.Appearance.Options.UseFont = true;
-            this.simpleButton8.Location = new System.Drawing.Point(12, 237);
+            this.simpleButton8.Location = new System.Drawing.Point(12, 243);
             this.simpleButton8.Name = "simpleButton8";
             this.simpleButton8.Size = new System.Drawing.Size(112, 56);
             this.simpleButton8.TabIndex = 0;
@@ -192,9 +192,10 @@
             // 
             // txtString
             // 
+            this.txtString.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtString.Location = new System.Drawing.Point(12, 12);
             this.txtString.Name = "txtString";
-            this.txtString.Size = new System.Drawing.Size(354, 21);
+            this.txtString.Size = new System.Drawing.Size(354, 27);
             this.txtString.TabIndex = 11;
             // 
             // NumberKeybord

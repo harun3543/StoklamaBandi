@@ -38,12 +38,14 @@ namespace StoklamaBandi.Printer
 
         public void Print(List<PrintModel> model)
         {
-            using (XtraReport report = new XtraReport())          {
+            using (XtraReport report = new XtraReport())          
+            {
                 printTool = new ReportPrintTool(report);
                 report.DataSource = model;
                 report.LoadLayout(layoutPath);
-                printTool.Print(printerName);
+                report.ShowPrintMarginsWarning = false;
                 //report.Print(printerName);
+                printTool.Print(printerName);
             }
 
         }

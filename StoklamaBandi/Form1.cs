@@ -35,11 +35,11 @@ namespace StoklamaBandi
         const int _resetMem = 6;
         const int _resetPiston = 7;
 
-        int[] mw;
+        int[] mwSayilan;
         bool[] mb;
         string sIstenilenAdet;
         bool startStopBit = false, stopThread = true, resetFlag;
-        bool readSettingFlag = false, flag = false, pistonFlag = false;
+        bool printFlag = false, flag = false, pistonFlag = false;
 
         public Form1()
         {
@@ -86,21 +86,74 @@ namespace StoklamaBandi
                     flag = true;
                 }
 
-                mw = modbusManager.ReadSingleWord(_okuDegerMem);
-                lblSayilanAdet.Text = Convert.ToString(mw[0]);
+                mwSayilan = modbusManager.ReadSingleWord(_okuDegerMem);
+                lblSayilanAdet.Text = Convert.ToString(mwSayilan[0]);
                 mb = modbusManager.ReadSingleCoil(_startMem);
+
+                if (txtIstenilenAdet.Text != "")
+                {
+                    modbusManager.WriteSingleWord(_istDegerMem, Convert.ToInt32(txtIstenilenAdet.Text));
+                }
+
                 modbusManager.WriteCoilRegister(_startMem, startStopBit);
                 modbusManager.WriteCoilRegister(_resetMem, resetFlag);
                 modbusManager.WriteCoilRegister(_resetPiston, pistonFlag);
                 StateSystemRun();
 
+                //Yazdırma işlemi
+                if (txtIstenilenAdet.Text != "")
+                {
+                    if (Convert.ToInt32(txtIstenilenAdet.Text) == mwSayilan[0] && printFlag == false && startStopBit)
+                    {
+                        printFlag = true;
+                        RunPrint();
+
+                    }
+
+                    if (printFlag && Convert.ToInt32(txtIstenilenAdet.Text) != mwSayilan[0])
+                    {
+                        printFlag = false;
+                    }
+                }
+
             }
+
             catch (Exception)
             {
                 TimerStop();
                 ButtonUnlock();
-                MessageBox.Show("PLC ile bağlantı koptu.");
+
             }
+        }
+
+        private void RunPrint()
+        {
+            //int resultIstenilen = Convert.ToInt32(txtIstenilenAdet.Text);
+
+            try
+            {
+                modelList.Clear();
+                var code = lblShowProductCode.Text;
+                var name = lblShowProductName.Text;
+                var adet = Convert.ToInt32(txtIstenilenAdet.Text);
+                var barcode = lblShowProductCode.Text + lblShowProductName.Text + txtIstenilenAdet.Text;
+                modelList.Add(new PrintModel
+                {
+                    MalzemeKodu = code,
+                    MalzemeAdi = name,
+                    Miktar = adet,
+                    Barkod = barcode
+                });
+
+                printer.Print(modelList);
+
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Yazıcıdan çıktı alınamadı.");
+            }
+
         }
 
         private void StateSystemRun()
@@ -118,9 +171,9 @@ namespace StoklamaBandi
 
         private void ThStateStart()
         {
-           // while (true)
+            // while (true)
             //{
-                ModbusClientConnect_State();
+            ModbusClientConnect_State();
             //}
         }
 
@@ -132,7 +185,7 @@ namespace StoklamaBandi
             stateStartStop.StateIndex = 1;
             lblSistemDurumu.Text = "Sistem ile bağlantı kesildi.";
             MessageBox.Show("PLC ile bağlantı kesildi.");
-           
+
         }
 
         #region Buton Kontrolleri 
@@ -153,14 +206,14 @@ namespace StoklamaBandi
             catch (Exception)
             {
 
-                lblSistemDurumu.Text= "Bağlantı Sağlanamadı.";
+                lblSistemDurumu.Text = "Bağlantı Sağlanamadı.";
             }
 
         }
 
         private void btnDisconnect(object sender, EventArgs e)
         {
-           // modbusManager.Disconnect();
+            // modbusManager.Disconnect();
             //lblSistemDurumu.Text = "Sistem ile bağlantı kesildi.";
             TimerStop();
             ButtonUnlock();
@@ -285,14 +338,14 @@ namespace StoklamaBandi
         private void ButtonLock()
         {
             btnConnect.Enabled = false;
-            
+
             //btnMiktarReset.Enabled = false;
         }
 
         private void ButtonUnlock()
         {
             btnConnect.Enabled = true;
-            
+
             //btnMiktarReset.Enabled = true;
         }
 
@@ -301,7 +354,7 @@ namespace StoklamaBandi
             modelList.Clear();
             var code = lblShowProductCode.Text;
             var name = lblShowProductName.Text;
-            var barcode = lblShowProductCode.Text + lblShowProductName.Text + txtIstenilenAdet.Text;
+            var barcode = lblShowProductName.Text + lblShowProductCode.Text + txtIstenilenAdet.Text;
             var adet = Convert.ToInt32(txtIstenilenAdet.Text);
             modelList.Add(new PrintModel
             {
@@ -320,7 +373,7 @@ namespace StoklamaBandi
             modelList.Clear();
             var code = lblShowProductCode.Text;
             var name = lblShowProductName.Text;
-            var barcode =  lblShowProductName.Text + lblShowProductCode.Text + txtIstenilenAdet.Text;
+            var barcode = lblShowProductName.Text + lblShowProductCode.Text + txtIstenilenAdet.Text;
             if (txtIstenilenAdet.Text != "")
             {
                 var adet = Convert.ToInt32(txtIstenilenAdet.Text);
@@ -347,7 +400,7 @@ namespace StoklamaBandi
                 modelList.Clear();
                 var code = lblShowProductCode.Text;
                 var name = lblShowProductName.Text;
-                var barcode = lblShowProductCode.Text + lblShowProductName.Text + txtIstenilenAdet.Text;
+                var barcode = lblShowProductName.Text + lblShowProductCode.Text + txtIstenilenAdet.Text;
                 var adet = Convert.ToInt32(txtIstenilenAdet.Text);
                 modelList.Add(new PrintModel
                 {
@@ -367,6 +420,12 @@ namespace StoklamaBandi
 
         }
 
+        private void btnFrmClose(object sender, EventArgs e)
+        {
+            timer1.Stop();
+
+            this.Close();
+        }
         #endregion
 
         #region Event işlemleri

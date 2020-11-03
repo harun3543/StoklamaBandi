@@ -189,4 +189,3 @@ C:\GitHub\StoklamaBandi\PrintTest\obj\Debug\PrintTest.exe
 C:\GitHub\StoklamaBandi\PrintTest\obj\Debug\PrintTest.pdb
 C:\GitHub\StoklamaBandi\PrintTest\obj\Debug\PrintTest.FrmPrint.resources
 C:\GitHub\StoklamaBandi\PrintTest\obj\Debug\PrintTest.Report1.resources
-C:\GitHub\StoklamaBandi\PrintTest\obj\Debug\PrintTest.csproj.CoreCompileInputs.cache

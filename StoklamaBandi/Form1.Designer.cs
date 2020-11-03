@@ -30,14 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState9 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState10 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState11 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState12 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState13 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState14 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState15 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState16 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState1 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState2 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState3 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState4 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState5 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState6 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState7 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState8 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
             this.btnPreviewPrint = new DevExpress.XtraEditors.SimpleButton();
@@ -51,6 +54,7 @@
             this.txtProductCode = new DevExpress.XtraEditors.TextEdit();
             this.dgwRecipe = new System.Windows.Forms.DataGridView();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.btnDisconnect2 = new DevExpress.XtraEditors.SimpleButton();
             this.label2 = new System.Windows.Forms.Label();
             this.lblSistemDurumu = new System.Windows.Forms.Label();
@@ -125,7 +129,7 @@
             // btnPrint
             // 
             this.btnPrint.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.ImageOptions.Image")));
-            this.btnPrint.Location = new System.Drawing.Point(305, 262);
+            this.btnPrint.Location = new System.Drawing.Point(545, 36);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnPrint.Size = new System.Drawing.Size(144, 50);
@@ -135,13 +139,13 @@
             // 
             // btnPreviewPrint
             // 
-            this.btnPreviewPrint.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnPreviewPrint.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnPreviewPrint.Appearance.Options.UseFont = true;
             this.btnPreviewPrint.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPreviewPrint.ImageOptions.Image")));
-            this.btnPreviewPrint.Location = new System.Drawing.Point(157, 262);
+            this.btnPreviewPrint.Location = new System.Drawing.Point(5, 262);
             this.btnPreviewPrint.Name = "btnPreviewPrint";
             this.btnPreviewPrint.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnPreviewPrint.Size = new System.Drawing.Size(143, 50);
+            this.btnPreviewPrint.Size = new System.Drawing.Size(197, 50);
             this.btnPreviewPrint.TabIndex = 19;
             this.btnPreviewPrint.Text = "Yazıcı Çıktısını Göster";
             this.btnPreviewPrint.Click += new System.EventHandler(this.btnShowPreview_Click);
@@ -149,7 +153,7 @@
             // btnShowDesigner
             // 
             this.btnShowDesigner.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnShowDesigner.ImageOptions.Image")));
-            this.btnShowDesigner.Location = new System.Drawing.Point(8, 262);
+            this.btnShowDesigner.Location = new System.Drawing.Point(545, 92);
             this.btnShowDesigner.Name = "btnShowDesigner";
             this.btnShowDesigner.Size = new System.Drawing.Size(143, 50);
             this.btnShowDesigner.TabIndex = 18;
@@ -158,36 +162,36 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnUpdate.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnUpdate.Appearance.Options.UseFont = true;
             this.btnUpdate.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.ImageOptions.Image")));
-            this.btnUpdate.Location = new System.Drawing.Point(157, 153);
+            this.btnUpdate.Location = new System.Drawing.Point(178, 153);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(143, 55);
+            this.btnUpdate.Size = new System.Drawing.Size(166, 62);
             this.btnUpdate.TabIndex = 17;
             this.btnUpdate.Text = "Güncelle";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
-            this.btnDelete.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnDelete.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnDelete.Appearance.Options.UseFont = true;
             this.btnDelete.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.ImageOptions.Image")));
-            this.btnDelete.Location = new System.Drawing.Point(306, 153);
+            this.btnDelete.Location = new System.Drawing.Point(350, 153);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(143, 55);
+            this.btnDelete.Size = new System.Drawing.Size(156, 62);
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Sil";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSave
             // 
-            this.btnSave.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSave.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.ImageOptions.Image")));
-            this.btnSave.Location = new System.Drawing.Point(8, 153);
+            this.btnSave.Location = new System.Drawing.Point(5, 153);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(143, 55);
+            this.btnSave.Size = new System.Drawing.Size(164, 62);
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Kaydet";
             this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
@@ -196,7 +200,7 @@
             // 
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Location = new System.Drawing.Point(8, 85);
+            this.labelControl6.Location = new System.Drawing.Point(9, 92);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(87, 18);
             this.labelControl6.TabIndex = 13;
@@ -204,9 +208,11 @@
             // 
             // txtProductName
             // 
-            this.txtProductName.Location = new System.Drawing.Point(115, 84);
+            this.txtProductName.Location = new System.Drawing.Point(115, 89);
             this.txtProductName.Name = "txtProductName";
-            this.txtProductName.Size = new System.Drawing.Size(190, 20);
+            this.txtProductName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtProductName.Properties.Appearance.Options.UseFont = true;
+            this.txtProductName.Size = new System.Drawing.Size(190, 26);
             this.txtProductName.TabIndex = 14;
             this.txtProductName.Click += new System.EventHandler(this.Txt_Click);
             // 
@@ -224,7 +230,9 @@
             // 
             this.txtProductCode.Location = new System.Drawing.Point(115, 48);
             this.txtProductCode.Name = "txtProductCode";
-            this.txtProductCode.Size = new System.Drawing.Size(190, 20);
+            this.txtProductCode.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtProductCode.Properties.Appearance.Options.UseFont = true;
+            this.txtProductCode.Size = new System.Drawing.Size(190, 26);
             this.txtProductCode.TabIndex = 12;
             this.txtProductCode.Click += new System.EventHandler(this.Txt_Click);
             // 
@@ -233,10 +241,35 @@
             this.dgwRecipe.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgwRecipe.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgwRecipe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgwRecipe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgwRecipe.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgwRecipe.Location = new System.Drawing.Point(694, 36);
             this.dgwRecipe.Name = "dgwRecipe";
-            this.dgwRecipe.RowHeadersWidth = 50;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgwRecipe.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgwRecipe.RowHeadersWidth = 60;
             this.dgwRecipe.Size = new System.Drawing.Size(541, 276);
             this.dgwRecipe.TabIndex = 0;
             this.dgwRecipe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwRecipe_CellClick);
@@ -244,6 +277,7 @@
             // groupControl2
             // 
             this.groupControl2.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("groupControl2.CaptionImageOptions.Image")));
+            this.groupControl2.Controls.Add(this.simpleButton1);
             this.groupControl2.Controls.Add(this.btnDisconnect2);
             this.groupControl2.Controls.Add(this.label2);
             this.groupControl2.Controls.Add(this.lblSistemDurumu);
@@ -255,12 +289,24 @@
             this.groupControl2.TabIndex = 4;
             this.groupControl2.Text = "Bağlantı Durumu";
             // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.simpleButton1.Appearance.Options.UseFont = true;
+            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.simpleButton1.Location = new System.Drawing.Point(1055, 26);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(180, 68);
+            this.simpleButton1.TabIndex = 5;
+            this.simpleButton1.Text = "Kapat";
+            this.simpleButton1.Click += new System.EventHandler(this.btnFrmClose);
+            // 
             // btnDisconnect2
             // 
-            this.btnDisconnect2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.btnDisconnect2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnDisconnect2.Appearance.Options.UseFont = true;
             this.btnDisconnect2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDisconnect2.ImageOptions.Image")));
-            this.btnDisconnect2.Location = new System.Drawing.Point(194, 31);
+            this.btnDisconnect2.Location = new System.Drawing.Point(191, 26);
             this.btnDisconnect2.Name = "btnDisconnect2";
             this.btnDisconnect2.Size = new System.Drawing.Size(180, 68);
             this.btnDisconnect2.TabIndex = 4;
@@ -270,20 +316,22 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.ForeColor = System.Drawing.Color.Red;
             this.label2.Location = new System.Drawing.Point(482, 52);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(125, 19);
+            this.label2.Size = new System.Drawing.Size(139, 19);
             this.label2.TabIndex = 3;
             this.label2.Text = "Sistem Durumu:";
             // 
             // lblSistemDurumu
             // 
             this.lblSistemDurumu.AutoSize = true;
-            this.lblSistemDurumu.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblSistemDurumu.Location = new System.Drawing.Point(618, 52);
+            this.lblSistemDurumu.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblSistemDurumu.ForeColor = System.Drawing.Color.Red;
+            this.lblSistemDurumu.Location = new System.Drawing.Point(627, 52);
             this.lblSistemDurumu.Name = "lblSistemDurumu";
-            this.lblSistemDurumu.Size = new System.Drawing.Size(36, 19);
+            this.lblSistemDurumu.Size = new System.Drawing.Size(39, 19);
             this.lblSistemDurumu.TabIndex = 2;
             this.lblSistemDurumu.Text = "***";
             // 
@@ -292,14 +340,14 @@
             this.gaugeControl1.AutoLayout = false;
             this.gaugeControl1.Gauges.AddRange(new DevExpress.XtraGauges.Base.IGauge[] {
             this.stateIndicatorGauge1});
-            this.gaugeControl1.Location = new System.Drawing.Point(387, 26);
+            this.gaugeControl1.Location = new System.Drawing.Point(377, 26);
             this.gaugeControl1.Name = "gaugeControl1";
-            this.gaugeControl1.Size = new System.Drawing.Size(89, 73);
+            this.gaugeControl1.Size = new System.Drawing.Size(89, 68);
             this.gaugeControl1.TabIndex = 1;
             // 
             // stateIndicatorGauge1
             // 
-            this.stateIndicatorGauge1.Bounds = new System.Drawing.Rectangle(6, 7, 77, 57);
+            this.stateIndicatorGauge1.Bounds = new System.Drawing.Rectangle(6, 2, 77, 62);
             this.stateIndicatorGauge1.Indicators.AddRange(new DevExpress.XtraGauges.Win.Gauges.State.StateIndicatorComponent[] {
             this.stateConnectComponent});
             this.stateIndicatorGauge1.Name = "stateIndicatorGauge1";
@@ -310,26 +358,26 @@
             this.stateConnectComponent.Name = "stateIndicatorComponent1";
             this.stateConnectComponent.Size = new System.Drawing.SizeF(200F, 200F);
             this.stateConnectComponent.StateIndex = 1;
-            ındicatorState9.Name = "State1";
-            ındicatorState9.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight1;
-            ındicatorState10.Name = "State2";
-            ındicatorState10.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight2;
-            ındicatorState11.Name = "State3";
-            ındicatorState11.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight3;
-            ındicatorState12.Name = "State4";
-            ındicatorState12.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight4;
+            ındicatorState1.Name = "State1";
+            ındicatorState1.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight1;
+            ındicatorState2.Name = "State2";
+            ındicatorState2.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight2;
+            ındicatorState3.Name = "State3";
+            ındicatorState3.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight3;
+            ındicatorState4.Name = "State4";
+            ındicatorState4.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight4;
             this.stateConnectComponent.States.AddRange(new DevExpress.XtraGauges.Core.Model.IIndicatorState[] {
-            ındicatorState9,
-            ındicatorState10,
-            ındicatorState11,
-            ındicatorState12});
+            ındicatorState1,
+            ındicatorState2,
+            ındicatorState3,
+            ındicatorState4});
             // 
             // btnConnect
             // 
-            this.btnConnect.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.btnConnect.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnConnect.Appearance.Options.UseFont = true;
             this.btnConnect.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnConnect.ImageOptions.Image")));
-            this.btnConnect.Location = new System.Drawing.Point(0, 33);
+            this.btnConnect.Location = new System.Drawing.Point(5, 26);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(180, 68);
             this.btnConnect.TabIndex = 0;
@@ -354,12 +402,12 @@
             // 
             // btnResetPiston
             // 
-            this.btnResetPiston.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnResetPiston.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnResetPiston.Appearance.Options.UseFont = true;
             this.btnResetPiston.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnResetPiston.ImageOptions.Image")));
             this.btnResetPiston.Location = new System.Drawing.Point(208, 39);
             this.btnResetPiston.Name = "btnResetPiston";
-            this.btnResetPiston.Size = new System.Drawing.Size(162, 66);
+            this.btnResetPiston.Size = new System.Drawing.Size(186, 66);
             this.btnResetPiston.TabIndex = 18;
             this.btnResetPiston.Text = "PİSTONU RESETLE";
             this.btnResetPiston.Click += new System.EventHandler(this.BtnResetPiston_Click);
@@ -376,7 +424,7 @@
             // 
             // btnStop
             // 
-            this.btnStop.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnStop.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnStop.Appearance.Options.UseFont = true;
             this.btnStop.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnStop.ImageOptions.Image")));
             this.btnStop.Location = new System.Drawing.Point(5, 116);
@@ -409,23 +457,23 @@
             this.stateStartStop.Name = "stateIndicatorComponent1";
             this.stateStartStop.Size = new System.Drawing.SizeF(200F, 200F);
             this.stateStartStop.StateIndex = 1;
-            ındicatorState13.Name = "State1";
-            ındicatorState13.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight1;
-            ındicatorState14.Name = "State2";
-            ındicatorState14.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight2;
-            ındicatorState15.Name = "State3";
-            ındicatorState15.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight3;
-            ındicatorState16.Name = "State4";
-            ındicatorState16.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight4;
+            ındicatorState5.Name = "State1";
+            ındicatorState5.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight1;
+            ındicatorState6.Name = "State2";
+            ındicatorState6.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight2;
+            ındicatorState7.Name = "State3";
+            ındicatorState7.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight3;
+            ındicatorState8.Name = "State4";
+            ındicatorState8.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight4;
             this.stateStartStop.States.AddRange(new DevExpress.XtraGauges.Core.Model.IIndicatorState[] {
-            ındicatorState13,
-            ındicatorState14,
-            ındicatorState15,
-            ındicatorState16});
+            ındicatorState5,
+            ındicatorState6,
+            ındicatorState7,
+            ındicatorState8});
             // 
             // btnStart
             // 
-            this.btnStart.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnStart.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnStart.Appearance.Options.UseFont = true;
             this.btnStart.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnStart.ImageOptions.Image")));
             this.btnStart.Location = new System.Drawing.Point(8, 39);
@@ -465,28 +513,33 @@
             // 
             // btnMiktarReset
             // 
+            this.btnMiktarReset.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnMiktarReset.Appearance.Options.UseFont = true;
             this.btnMiktarReset.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnMiktarReset.ImageOptions.Image")));
-            this.btnMiktarReset.Location = new System.Drawing.Point(242, 82);
+            this.btnMiktarReset.Location = new System.Drawing.Point(5, 188);
             this.btnMiktarReset.Name = "btnMiktarReset";
-            this.btnMiktarReset.Size = new System.Drawing.Size(123, 51);
+            this.btnMiktarReset.Size = new System.Drawing.Size(159, 70);
             this.btnMiktarReset.TabIndex = 17;
             this.btnMiktarReset.Text = "Miktarı Resetle";
             this.btnMiktarReset.Click += new System.EventHandler(this.BtnReset_Click);
             // 
             // cbxSelectRecipe
             // 
+            this.cbxSelectRecipe.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.cbxSelectRecipe.FormattingEnabled = true;
             this.cbxSelectRecipe.Location = new System.Drawing.Point(137, 38);
             this.cbxSelectRecipe.Name = "cbxSelectRecipe";
-            this.cbxSelectRecipe.Size = new System.Drawing.Size(212, 21);
+            this.cbxSelectRecipe.Size = new System.Drawing.Size(212, 27);
             this.cbxSelectRecipe.TabIndex = 16;
             this.cbxSelectRecipe.SelectedIndexChanged += new System.EventHandler(this.cbxSelectRecipe_IndexChanged);
             // 
             // txtIstenilenAdet
             // 
-            this.txtIstenilenAdet.Location = new System.Drawing.Point(137, 152);
+            this.txtIstenilenAdet.Location = new System.Drawing.Point(137, 83);
             this.txtIstenilenAdet.Name = "txtIstenilenAdet";
-            this.txtIstenilenAdet.Size = new System.Drawing.Size(212, 20);
+            this.txtIstenilenAdet.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtIstenilenAdet.Properties.Appearance.Options.UseFont = true;
+            this.txtIstenilenAdet.Size = new System.Drawing.Size(212, 26);
             this.txtIstenilenAdet.TabIndex = 9;
             this.txtIstenilenAdet.EditValueChanged += new System.EventHandler(this.TxtIstenilenAdet_EditValueChanged);
             this.txtIstenilenAdet.Click += new System.EventHandler(this.TxtNumber_Click);
@@ -495,7 +548,7 @@
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(5, 155);
+            this.labelControl3.Location = new System.Drawing.Point(5, 86);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(122, 19);
             this.labelControl3.TabIndex = 8;
@@ -505,7 +558,7 @@
             // 
             this.lblSayilanAdet.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblSayilanAdet.Appearance.Options.UseFont = true;
-            this.lblSayilanAdet.Location = new System.Drawing.Point(137, 98);
+            this.lblSayilanAdet.Location = new System.Drawing.Point(137, 127);
             this.lblSayilanAdet.Name = "lblSayilanAdet";
             this.lblSayilanAdet.Size = new System.Drawing.Size(27, 19);
             this.lblSayilanAdet.TabIndex = 7;
@@ -515,7 +568,7 @@
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(5, 96);
+            this.labelControl2.Location = new System.Drawing.Point(5, 125);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(109, 19);
             this.labelControl2.TabIndex = 6;
@@ -689,6 +742,7 @@
         private DevExpress.XtraEditors.SimpleButton btnMiktarReset;
         private System.Windows.Forms.Label label3;
         private DevExpress.XtraEditors.SimpleButton btnResetPiston;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }
 

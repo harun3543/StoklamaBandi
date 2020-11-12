@@ -39,6 +39,7 @@
             DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState7 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
             DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState8 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.btnPreviewPrint = new DevExpress.XtraEditors.SimpleButton();
             this.btnUpdate = new DevExpress.XtraEditors.SimpleButton();
             this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
@@ -67,7 +68,15 @@
             this.btnStart = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
-            this.btnMiktarReset = new DevExpress.XtraEditors.SimpleButton();
+            this.btnKasaNReset = new DevExpress.XtraEditors.SimpleButton();
+            this.btnToplamMReset = new DevExpress.XtraEditors.SimpleButton();
+            this.txtToplamMiktar = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
+            this.lblKasaNumarasi = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.lblToplamMiktar = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.btnKasaİciMReset = new DevExpress.XtraEditors.SimpleButton();
             this.cbxSelectRecipe = new System.Windows.Forms.ComboBox();
             this.txtIstenilenAdet = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -96,6 +105,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.stateStartStop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtToplamMiktar.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIstenilenAdet.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
@@ -104,6 +114,7 @@
             // groupControl1
             // 
             this.groupControl1.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("groupControl1.CaptionImageOptions.Image")));
+            this.groupControl1.Controls.Add(this.labelControl8);
             this.groupControl1.Controls.Add(this.btnPreviewPrint);
             this.groupControl1.Controls.Add(this.btnUpdate);
             this.groupControl1.Controls.Add(this.btnDelete);
@@ -113,18 +124,28 @@
             this.groupControl1.Controls.Add(this.labelControl5);
             this.groupControl1.Controls.Add(this.txtProductCode);
             this.groupControl1.Controls.Add(this.dgwRecipe);
-            this.groupControl1.Location = new System.Drawing.Point(12, 282);
+            this.groupControl1.Location = new System.Drawing.Point(12, 322);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1240, 325);
+            this.groupControl1.Size = new System.Drawing.Size(1235, 285);
             this.groupControl1.TabIndex = 3;
             this.groupControl1.Text = "Reçete Bilgileri";
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelControl8.Appearance.Options.UseFont = true;
+            this.labelControl8.Location = new System.Drawing.Point(520, 36);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(30, 23);
+            this.labelControl8.TabIndex = 26;
+            this.labelControl8.Text = "***";
             // 
             // btnPreviewPrint
             // 
             this.btnPreviewPrint.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnPreviewPrint.Appearance.Options.UseFont = true;
             this.btnPreviewPrint.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPreviewPrint.ImageOptions.Image")));
-            this.btnPreviewPrint.Location = new System.Drawing.Point(5, 262);
+            this.btnPreviewPrint.Location = new System.Drawing.Point(0, 230);
             this.btnPreviewPrint.Name = "btnPreviewPrint";
             this.btnPreviewPrint.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnPreviewPrint.Size = new System.Drawing.Size(197, 50);
@@ -214,11 +235,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgwRecipe.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dgwRecipe.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgwRecipe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgwRecipe.Location = new System.Drawing.Point(694, 36);
             this.dgwRecipe.Name = "dgwRecipe";
             this.dgwRecipe.RowHeadersWidth = 60;
-            this.dgwRecipe.Size = new System.Drawing.Size(541, 276);
+            this.dgwRecipe.Size = new System.Drawing.Size(536, 236);
             this.dgwRecipe.TabIndex = 0;
             this.dgwRecipe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwRecipe_CellClick);
             // 
@@ -344,7 +366,7 @@
             this.groupControl3.Controls.Add(this.btnStart);
             this.groupControl3.Location = new System.Drawing.Point(12, 13);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(399, 263);
+            this.groupControl3.Size = new System.Drawing.Size(399, 303);
             this.groupControl3.TabIndex = 5;
             this.groupControl3.Text = "Süreç İşlemleri";
             // 
@@ -366,9 +388,9 @@
             this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label3.Location = new System.Drawing.Point(5, 213);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(179, 19);
+            this.label3.Size = new System.Drawing.Size(185, 19);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Motor Çalışma Durumu:";
+            this.label3.Text = "Sistem Çalışma Durumu:";
             // 
             // btnStop
             // 
@@ -446,7 +468,15 @@
             this.groupControl4.Appearance.BackColor = System.Drawing.Color.Gainsboro;
             this.groupControl4.Appearance.Options.UseBackColor = true;
             this.groupControl4.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("groupControl4.CaptionImageOptions.Image")));
-            this.groupControl4.Controls.Add(this.btnMiktarReset);
+            this.groupControl4.Controls.Add(this.btnKasaNReset);
+            this.groupControl4.Controls.Add(this.btnToplamMReset);
+            this.groupControl4.Controls.Add(this.txtToplamMiktar);
+            this.groupControl4.Controls.Add(this.labelControl13);
+            this.groupControl4.Controls.Add(this.lblKasaNumarasi);
+            this.groupControl4.Controls.Add(this.labelControl9);
+            this.groupControl4.Controls.Add(this.lblToplamMiktar);
+            this.groupControl4.Controls.Add(this.labelControl4);
+            this.groupControl4.Controls.Add(this.btnKasaİciMReset);
             this.groupControl4.Controls.Add(this.cbxSelectRecipe);
             this.groupControl4.Controls.Add(this.txtIstenilenAdet);
             this.groupControl4.Controls.Add(this.labelControl3);
@@ -455,21 +485,105 @@
             this.groupControl4.Controls.Add(this.labelControl1);
             this.groupControl4.Location = new System.Drawing.Point(417, 13);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(433, 263);
+            this.groupControl4.Size = new System.Drawing.Size(433, 303);
             this.groupControl4.TabIndex = 6;
             this.groupControl4.Text = "Reçete Seçimi";
             // 
-            // btnMiktarReset
+            // btnKasaNReset
             // 
-            this.btnMiktarReset.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnMiktarReset.Appearance.Options.UseFont = true;
-            this.btnMiktarReset.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnMiktarReset.ImageOptions.Image")));
-            this.btnMiktarReset.Location = new System.Drawing.Point(5, 188);
-            this.btnMiktarReset.Name = "btnMiktarReset";
-            this.btnMiktarReset.Size = new System.Drawing.Size(159, 70);
-            this.btnMiktarReset.TabIndex = 17;
-            this.btnMiktarReset.Text = "Miktarı Resetle";
-            this.btnMiktarReset.Click += new System.EventHandler(this.BtnReset_Click);
+            this.btnKasaNReset.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnKasaNReset.Appearance.Options.UseFont = true;
+            this.btnKasaNReset.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnKasaNReset.ImageOptions.Image")));
+            this.btnKasaNReset.Location = new System.Drawing.Point(248, 266);
+            this.btnKasaNReset.Name = "btnKasaNReset";
+            this.btnKasaNReset.Size = new System.Drawing.Size(180, 32);
+            this.btnKasaNReset.TabIndex = 25;
+            this.btnKasaNReset.Text = "Kasa N. Resetle";
+            this.btnKasaNReset.Click += new System.EventHandler(this.btnKasaMReset_Click);
+            // 
+            // btnToplamMReset
+            // 
+            this.btnToplamMReset.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnToplamMReset.Appearance.Options.UseFont = true;
+            this.btnToplamMReset.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnToplamMReset.ImageOptions.Image")));
+            this.btnToplamMReset.Location = new System.Drawing.Point(248, 215);
+            this.btnToplamMReset.Name = "btnToplamMReset";
+            this.btnToplamMReset.Size = new System.Drawing.Size(180, 32);
+            this.btnToplamMReset.TabIndex = 24;
+            this.btnToplamMReset.Text = "Toplam M. Resetle";
+            this.btnToplamMReset.Click += new System.EventHandler(this.btnToplamMReset_Click);
+            // 
+            // txtToplamMiktar
+            // 
+            this.txtToplamMiktar.Location = new System.Drawing.Point(137, 70);
+            this.txtToplamMiktar.Name = "txtToplamMiktar";
+            this.txtToplamMiktar.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtToplamMiktar.Properties.Appearance.Options.UseFont = true;
+            this.txtToplamMiktar.Size = new System.Drawing.Size(212, 26);
+            this.txtToplamMiktar.TabIndex = 23;
+            this.txtToplamMiktar.Click += new System.EventHandler(this.TxtNumber_Click);
+            // 
+            // labelControl13
+            // 
+            this.labelControl13.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelControl13.Appearance.Options.UseFont = true;
+            this.labelControl13.Location = new System.Drawing.Point(5, 73);
+            this.labelControl13.Name = "labelControl13";
+            this.labelControl13.Size = new System.Drawing.Size(125, 19);
+            this.labelControl13.TabIndex = 22;
+            this.labelControl13.Text = "Toplam Miktar:";
+            // 
+            // lblKasaNumarasi
+            // 
+            this.lblKasaNumarasi.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblKasaNumarasi.Appearance.Options.UseFont = true;
+            this.lblKasaNumarasi.Location = new System.Drawing.Point(137, 279);
+            this.lblKasaNumarasi.Name = "lblKasaNumarasi";
+            this.lblKasaNumarasi.Size = new System.Drawing.Size(30, 23);
+            this.lblKasaNumarasi.TabIndex = 21;
+            this.lblKasaNumarasi.Text = "***";
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelControl9.Appearance.Options.UseFont = true;
+            this.labelControl9.Location = new System.Drawing.Point(6, 279);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(127, 19);
+            this.labelControl9.TabIndex = 20;
+            this.labelControl9.Text = "Kasa Numarası:";
+            // 
+            // lblToplamMiktar
+            // 
+            this.lblToplamMiktar.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblToplamMiktar.Appearance.Options.UseFont = true;
+            this.lblToplamMiktar.Location = new System.Drawing.Point(137, 224);
+            this.lblToplamMiktar.Name = "lblToplamMiktar";
+            this.lblToplamMiktar.Size = new System.Drawing.Size(30, 23);
+            this.lblToplamMiktar.TabIndex = 19;
+            this.lblToplamMiktar.Text = "***";
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelControl4.Appearance.Options.UseFont = true;
+            this.labelControl4.Location = new System.Drawing.Point(5, 228);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(125, 19);
+            this.labelControl4.TabIndex = 18;
+            this.labelControl4.Text = "Toplam Miktar:";
+            // 
+            // btnKasaİciMReset
+            // 
+            this.btnKasaİciMReset.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnKasaİciMReset.Appearance.Options.UseFont = true;
+            this.btnKasaİciMReset.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnKasaİciMReset.ImageOptions.Image")));
+            this.btnKasaİciMReset.Location = new System.Drawing.Point(249, 164);
+            this.btnKasaİciMReset.Name = "btnKasaİciMReset";
+            this.btnKasaİciMReset.Size = new System.Drawing.Size(180, 32);
+            this.btnKasaİciMReset.TabIndex = 17;
+            this.btnKasaİciMReset.Text = "Kasa içi M. Resetle";
+            this.btnKasaİciMReset.Click += new System.EventHandler(this.BtnReset_Click);
             // 
             // cbxSelectRecipe
             // 
@@ -483,7 +597,7 @@
             // 
             // txtIstenilenAdet
             // 
-            this.txtIstenilenAdet.Location = new System.Drawing.Point(137, 83);
+            this.txtIstenilenAdet.Location = new System.Drawing.Point(137, 102);
             this.txtIstenilenAdet.Name = "txtIstenilenAdet";
             this.txtIstenilenAdet.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtIstenilenAdet.Properties.Appearance.Options.UseFont = true;
@@ -496,17 +610,17 @@
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(5, 86);
+            this.labelControl3.Location = new System.Drawing.Point(5, 105);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(122, 19);
+            this.labelControl3.Size = new System.Drawing.Size(128, 19);
             this.labelControl3.TabIndex = 8;
-            this.labelControl3.Text = "İstenilen Adet:";
+            this.labelControl3.Text = "Kasa İçi Miktar:";
             // 
             // lblSayilanAdet
             // 
             this.lblSayilanAdet.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblSayilanAdet.Appearance.Options.UseFont = true;
-            this.lblSayilanAdet.Location = new System.Drawing.Point(137, 125);
+            this.lblSayilanAdet.Location = new System.Drawing.Point(138, 173);
             this.lblSayilanAdet.Name = "lblSayilanAdet";
             this.lblSayilanAdet.Size = new System.Drawing.Size(30, 23);
             this.lblSayilanAdet.TabIndex = 7;
@@ -516,11 +630,11 @@
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(5, 125);
+            this.labelControl2.Location = new System.Drawing.Point(6, 173);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(109, 19);
+            this.labelControl2.Size = new System.Drawing.Size(126, 19);
             this.labelControl2.TabIndex = 6;
-            this.labelControl2.Text = "Sayılan Adet:";
+            this.labelControl2.Text = "Kasa içi Miktar:";
             // 
             // groupControl5
             // 
@@ -535,7 +649,7 @@
             this.groupControl5.Controls.Add(this.labelControl11);
             this.groupControl5.Location = new System.Drawing.Point(856, 13);
             this.groupControl5.Name = "groupControl5";
-            this.groupControl5.Size = new System.Drawing.Size(391, 263);
+            this.groupControl5.Size = new System.Drawing.Size(391, 303);
             this.groupControl5.TabIndex = 16;
             this.groupControl5.Text = "Seçilen Reçete Bilgileri";
             // 
@@ -614,6 +728,7 @@
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Stoklama Bandı";
@@ -637,6 +752,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
             this.groupControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtToplamMiktar.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIstenilenAdet.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
@@ -685,10 +801,19 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label2;
         private DevExpress.XtraEditors.SimpleButton btnDisconnect2;
-        private DevExpress.XtraEditors.SimpleButton btnMiktarReset;
+        private DevExpress.XtraEditors.SimpleButton btnKasaİciMReset;
         private System.Windows.Forms.Label label3;
         private DevExpress.XtraEditors.SimpleButton btnResetPiston;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.TextEdit txtToplamMiktar;
+        private DevExpress.XtraEditors.LabelControl labelControl13;
+        private DevExpress.XtraEditors.LabelControl lblKasaNumarasi;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraEditors.LabelControl lblToplamMiktar;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.SimpleButton btnKasaNReset;
+        private DevExpress.XtraEditors.SimpleButton btnToplamMReset;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
     }
 }
 

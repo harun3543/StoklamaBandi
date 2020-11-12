@@ -25,19 +25,19 @@ namespace StoklamaBandi
         PrinterHelper printer;
         ProductDal productDal;
         List<PrintModel> modelList;
-        Thread thCycle;
+        
         //FileStream fsSettings;
         //StreamReader streader;
         //string _serialPortName;
         string returnId;
         const int _istDegerMem = 100;
         const int _istToplamDegerMem = 110;
-        const int _okuDegerMem = 10;
+        const int _sayilanKasaIciDegerMem = 10;
         const int _sayilanToplamMiktarMem = 20;
         const int _sayilanKasaMiktarıMem = 26;
         const int _startMem = 5;
         const int _resetMem = 6;
-        const int _resetPiston = 7;
+        const int _memIOPiston = 7;
         const int _memResetToplamMik = 13;
         const int _memResetKasaMik = 14;
 
@@ -47,7 +47,7 @@ namespace StoklamaBandi
         string sIstenilenAdet;
         int _kalanToplamMiktar = 0;
         bool startStopBit = false, resetFlag, flagResetToplamMik, flagResetKasaMik;
-        bool printFlag = false, flag = false, pistonFlag = false;
+        bool printFlag = false, flag = false, flagPiston = false;
 
         public Form1()
         {
@@ -58,7 +58,7 @@ namespace StoklamaBandi
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            thCycle = new Thread(new ThreadStart(ThCycleStart));
+            
             productDal = new ProductDal();
             printer = new PrinterHelper();
             modelList = new List<PrintModel>();
@@ -71,90 +71,7 @@ namespace StoklamaBandi
             _kalanToplamMiktar = 0;
         }
 
-        private void ThCycleStart()
-        {
-            while (true)
-            {
-                try
-                {
-                    //Modbus TCP bağlanma durumunu izleme
-                    ThStateStart();
-
-                    //if (!flag)
-                    //{
-                    //    bool[] _mb = modbusManager.ReadSingleCoil(_startMem);
-                    //    startStopBit = _mb[0];
-                    //    flag = true;
-                    //}
-
-                    //********************PLC den okuma işlmeleri*****************
-                    mwSayilan = modbusManager.ReadSingleWord(_okuDegerMem);
-                    lblSayilanAdet.Text = Convert.ToString(mwSayilan[0]);
-                    mwSayilanToplamMiktar = modbusManager.ReadSingleWord(_sayilanToplamMiktarMem);
-                    lblToplamMiktar.Text = Convert.ToString(mwSayilanToplamMiktar[0]);
-                    mwSayilanKasaMiktarı = modbusManager.ReadSingleWord(_sayilanKasaMiktarıMem);
-                    lblKasaNumarasi.Text = Convert.ToString(mwSayilanKasaMiktarı[0]);
-
-                    labelControl8.Text = Convert.ToString(_kalanToplamMiktar);
-                    mb = modbusManager.ReadSingleCoil(_startMem);
-
-                    if (txtIstenilenAdet.Text != "")
-                    {
-                        modbusManager.WriteSingleWord(_istDegerMem, Convert.ToInt32(txtIstenilenAdet.Text));
-                    }
-
-                    //******************PLC ye yazma işlemleri************************
-                    modbusManager.WriteCoilRegister(_startMem, startStopBit);
-                    modbusManager.WriteCoilRegister(_resetMem, resetFlag);
-                    modbusManager.WriteCoilRegister(_resetPiston, pistonFlag);
-                    modbusManager.WriteCoilRegister(_memResetToplamMik, flagResetToplamMik);
-                    modbusManager.WriteCoilRegister(_memResetKasaMik, flagResetKasaMik);
-
-                    StateSystemRun();
-
-                    //Yazdırma işlemi
-                    if (txtIstenilenAdet.Text != "")
-                    {
-                        if (Convert.ToInt32(txtIstenilenAdet.Text) == mwSayilan[0] && printFlag == false && startStopBit)
-                        {
-                            printFlag = true;
-                            _kalanToplamMiktar = _kalanToplamMiktar - Convert.ToInt32(txtIstenilenAdet.Text);
-
-                            RunPrint();
-
-                            if (_kalanToplamMiktar < Convert.ToInt32(txtIstenilenAdet.Text))
-                            {
-                                txtIstenilenAdet.Text = Convert.ToString(_kalanToplamMiktar);
-                            }
-
-                        }
-                        //if (Convert.ToInt32(txtIstenilenAdet.Text) < mwSayilan[0] || mwSayilan[0] == 0 || mwSayilan[0] == 1)
-                        if (Convert.ToInt32(txtIstenilenAdet.Text) < mwSayilan[0] || Convert.ToInt32(txtIstenilenAdet.Text) > mwSayilan[0])
-                        {
-                            printFlag = false;
-                        }
-
-                    }
-
-
-                    if (resetFlag)
-                    {
-                        resetFlag = false;
-                    }
-
-                }
-
-                //*******************Hata*********************
-                catch (Exception)
-                {
-                    //TimerStop();
-                    ButtonUnlock();
-                    lblSistemDurumu.Text = "Sistem ile bağlantı kesildi.";
-                }
-                Thread.Sleep(100);
-            }
-            
-        }
+    
 
         private void LoadProduct()
         {
@@ -177,15 +94,15 @@ namespace StoklamaBandi
                 //Modbus TCP bağlanma durumunu izleme
                 ThStateStart();
 
-                //if (!flag)
-                //{
-                //    bool[] _mb = modbusManager.ReadSingleCoil(_startMem);
-                //    startStopBit = _mb[0];
-                //    flag = true;
-                //}
+                if (!flag)
+                {
+                    bool[] _mb = modbusManager.ReadSingleCoil(_memIOPiston);
+                    flagPiston = _mb[0];
+                    flag = true;
+                }
 
                 //********************PLC den okuma işlmeleri*****************
-                mwSayilan = modbusManager.ReadSingleWord(_okuDegerMem);
+                mwSayilan = modbusManager.ReadSingleWord(_sayilanKasaIciDegerMem);
                 lblSayilanAdet.Text = Convert.ToString(mwSayilan[0]);
                 mwSayilanToplamMiktar = modbusManager.ReadSingleWord(_sayilanToplamMiktarMem);
                 lblToplamMiktar.Text = Convert.ToString(mwSayilanToplamMiktar[0]);
@@ -200,15 +117,15 @@ namespace StoklamaBandi
                     modbusManager.WriteSingleWord(_istDegerMem, Convert.ToInt32(txtIstenilenAdet.Text));
                 }
 
-                if (txtToplamMiktar.Text != "")
-                {
-                    modbusManager.WriteSingleWord(_istToplamDegerMem, Convert.ToInt32(txtToplamMiktar.Text));
-                }
+                //if (txtToplamMiktar.Text != "")
+                //{
+                //    modbusManager.WriteSingleWord(_istToplamDegerMem, Convert.ToInt32(txtToplamMiktar.Text));
+                //}
 
                 //******************PLC ye yazma işlemleri************************
                 modbusManager.WriteCoilRegister(_startMem, startStopBit);
                 modbusManager.WriteCoilRegister(_resetMem, resetFlag);
-                modbusManager.WriteCoilRegister(_resetPiston, pistonFlag);
+                modbusManager.WriteCoilRegister(_memIOPiston, flagPiston);
                 modbusManager.WriteCoilRegister(_memResetToplamMik, flagResetToplamMik);
                 modbusManager.WriteCoilRegister(_memResetKasaMik, flagResetKasaMik);
 
@@ -220,9 +137,22 @@ namespace StoklamaBandi
                     if (Convert.ToInt32(txtIstenilenAdet.Text) == mwSayilan[0] && printFlag == false && startStopBit)
                     {
                         printFlag = true;
+
                         _kalanToplamMiktar = _kalanToplamMiktar - Convert.ToInt32(txtIstenilenAdet.Text);
                         
                         RunPrint();
+
+                        if (!flagPiston)
+                        {
+                            flagPiston = true;
+                        }
+
+                        else
+                        {
+                            flagPiston = false;
+                        }
+
+                        modbusManager.WriteSingleWord(_sayilanKasaIciDegerMem, 0);
 
                         if (_kalanToplamMiktar < Convert.ToInt32(txtIstenilenAdet.Text) && _kalanToplamMiktar > 0)
                         {
@@ -230,7 +160,7 @@ namespace StoklamaBandi
                         }
 
                     }
-                    //if (Convert.ToInt32(txtIstenilenAdet.Text) < mwSayilan[0] || mwSayilan[0] == 0 || mwSayilan[0] == 1)
+                   
                     if (Convert.ToInt32(txtIstenilenAdet.Text) < mwSayilan[0] || Convert.ToInt32(txtIstenilenAdet.Text) > mwSayilan[0])
                     {
                         printFlag = false;
@@ -396,7 +326,7 @@ namespace StoklamaBandi
             printFlag = false;
         }
 
-        private void BtnReset_Click(object sender, EventArgs e)
+        private void BtnKasaMiktarReset_Click(object sender, EventArgs e)
         {
 
             resetFlag = true;
@@ -406,7 +336,15 @@ namespace StoklamaBandi
 
         private void BtnResetPiston_Click(object sender, EventArgs e)
         {
-            pistonFlag = true;
+            if (!flagPiston)
+            {
+                flagPiston = true;
+            }
+
+            else
+            {
+                flagPiston = false;
+            }
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {

@@ -13,7 +13,7 @@ namespace StoklamaBandi
 {
     public partial class UserKeybord : Form 
     {
-        string _textString;
+        //string _textString;
         public string ReturnString {get;set;}
         public string setString { get; set; }
 

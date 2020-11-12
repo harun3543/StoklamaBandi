@@ -583,7 +583,7 @@
             this.btnKasaİciMReset.Size = new System.Drawing.Size(180, 32);
             this.btnKasaİciMReset.TabIndex = 17;
             this.btnKasaİciMReset.Text = "Kasa içi M. Resetle";
-            this.btnKasaİciMReset.Click += new System.EventHandler(this.BtnReset_Click);
+            this.btnKasaİciMReset.Click += new System.EventHandler(this.BtnKasaMiktarReset_Click);
             // 
             // cbxSelectRecipe
             // 

@@ -88,6 +88,7 @@ namespace StoklamaBandi
 
                 mwSayilan = modbusManager.ReadSingleWord(_okuDegerMem);
                 lblSayilanAdet.Text = Convert.ToString(mwSayilan[0]);
+              
                 mb = modbusManager.ReadSingleCoil(_startMem);
 
                 if (txtIstenilenAdet.Text != "")
@@ -98,6 +99,7 @@ namespace StoklamaBandi
                 modbusManager.WriteCoilRegister(_startMem, startStopBit);
                 modbusManager.WriteCoilRegister(_resetMem, resetFlag);
                 modbusManager.WriteCoilRegister(_resetPiston, pistonFlag);
+
                 StateSystemRun();
 
                 //Yazdırma işlemi
@@ -110,10 +112,17 @@ namespace StoklamaBandi
 
                     }
 
-                    if (printFlag && Convert.ToInt32(txtIstenilenAdet.Text) != mwSayilan[0])
+                    if (Convert.ToInt32(txtIstenilenAdet.Text) < mwSayilan[0] || mwSayilan[0] == 0)
                     {
                         printFlag = false;
                     }
+
+                }
+              
+
+                if (resetFlag)
+                {
+                    resetFlag = false;
                 }
 
             }
@@ -247,6 +256,7 @@ namespace StoklamaBandi
             btnDelete.Enabled = true;
             btnMiktarReset.Enabled = true;
             btnResetPiston.Enabled = true;
+            printFlag = false;
         }
 
         private void BtnReset_Click(object sender, EventArgs e)

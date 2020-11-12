@@ -30,9 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState1 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
             DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState2 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
             DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState3 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
@@ -42,9 +39,7 @@
             DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState7 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
             DevExpress.XtraGauges.Core.Model.IndicatorState ındicatorState8 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
             this.btnPreviewPrint = new DevExpress.XtraEditors.SimpleButton();
-            this.btnShowDesigner = new DevExpress.XtraEditors.SimpleButton();
             this.btnUpdate = new DevExpress.XtraEditors.SimpleButton();
             this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
@@ -109,9 +104,7 @@
             // groupControl1
             // 
             this.groupControl1.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("groupControl1.CaptionImageOptions.Image")));
-            this.groupControl1.Controls.Add(this.btnPrint);
             this.groupControl1.Controls.Add(this.btnPreviewPrint);
-            this.groupControl1.Controls.Add(this.btnShowDesigner);
             this.groupControl1.Controls.Add(this.btnUpdate);
             this.groupControl1.Controls.Add(this.btnDelete);
             this.groupControl1.Controls.Add(this.btnSave);
@@ -126,17 +119,6 @@
             this.groupControl1.TabIndex = 3;
             this.groupControl1.Text = "Reçete Bilgileri";
             // 
-            // btnPrint
-            // 
-            this.btnPrint.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.ImageOptions.Image")));
-            this.btnPrint.Location = new System.Drawing.Point(545, 36);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnPrint.Size = new System.Drawing.Size(144, 50);
-            this.btnPrint.TabIndex = 20;
-            this.btnPrint.Text = "Yazdır";
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
-            // 
             // btnPreviewPrint
             // 
             this.btnPreviewPrint.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -149,16 +131,6 @@
             this.btnPreviewPrint.TabIndex = 19;
             this.btnPreviewPrint.Text = "Yazıcı Çıktısını Göster";
             this.btnPreviewPrint.Click += new System.EventHandler(this.btnShowPreview_Click);
-            // 
-            // btnShowDesigner
-            // 
-            this.btnShowDesigner.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnShowDesigner.ImageOptions.Image")));
-            this.btnShowDesigner.Location = new System.Drawing.Point(545, 92);
-            this.btnShowDesigner.Name = "btnShowDesigner";
-            this.btnShowDesigner.Size = new System.Drawing.Size(143, 50);
-            this.btnShowDesigner.TabIndex = 18;
-            this.btnShowDesigner.Text = "Designer Göster";
-            this.btnShowDesigner.Click += new System.EventHandler(this.btnShowDesigner_Click);
             // 
             // btnUpdate
             // 
@@ -242,33 +214,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgwRecipe.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgwRecipe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgwRecipe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgwRecipe.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgwRecipe.Location = new System.Drawing.Point(694, 36);
             this.dgwRecipe.Name = "dgwRecipe";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgwRecipe.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgwRecipe.RowHeadersWidth = 60;
             this.dgwRecipe.Size = new System.Drawing.Size(541, 276);
             this.dgwRecipe.TabIndex = 0;
@@ -556,11 +504,11 @@
             // 
             // lblSayilanAdet
             // 
-            this.lblSayilanAdet.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblSayilanAdet.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblSayilanAdet.Appearance.Options.UseFont = true;
-            this.lblSayilanAdet.Location = new System.Drawing.Point(137, 127);
+            this.lblSayilanAdet.Location = new System.Drawing.Point(137, 125);
             this.lblSayilanAdet.Name = "lblSayilanAdet";
-            this.lblSayilanAdet.Size = new System.Drawing.Size(27, 19);
+            this.lblSayilanAdet.Size = new System.Drawing.Size(30, 23);
             this.lblSayilanAdet.TabIndex = 7;
             this.lblSayilanAdet.Text = "***";
             // 
@@ -730,8 +678,6 @@
         private DevExpress.XtraEditors.LabelControl lblShowProductCode;
         private System.Windows.Forms.Label lblSistemDurumu;
         private System.Windows.Forms.ComboBox cbxSelectRecipe;
-        private DevExpress.XtraEditors.SimpleButton btnShowDesigner;
-        private DevExpress.XtraEditors.SimpleButton btnPrint;
         private DevExpress.XtraEditors.SimpleButton btnPreviewPrint;
         private DevExpress.XtraGauges.Win.GaugeControl gaugeControl2;
         private DevExpress.XtraGauges.Win.Gauges.State.StateIndicatorGauge stateIndicatorGauge2;

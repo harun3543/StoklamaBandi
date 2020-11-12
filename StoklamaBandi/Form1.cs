@@ -112,7 +112,7 @@ namespace StoklamaBandi
 
                     }
 
-                    if (Convert.ToInt32(txtIstenilenAdet.Text) < mwSayilan[0] || mwSayilan[0] == 0)
+                    if (Convert.ToInt32(txtIstenilenAdet.Text) < mwSayilan[0] || mwSayilan[0] == 0 || mwSayilan[0] == 1)
                     {
                         printFlag = false;
                     }

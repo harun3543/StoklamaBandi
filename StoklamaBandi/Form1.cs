@@ -67,7 +67,13 @@ namespace StoklamaBandi
             btnUpdate.Enabled = true;
             btnDelete.Enabled = true;
             btnResetPiston.Enabled = false;
-            btnKasaİciMReset.Enabled = false;
+            btnKasaIciMReset.Enabled = false;
+            txtIstenilenAdet.Enabled = false;
+            txtToplamMiktar.Enabled = false;
+            btnStart.Enabled = false;
+            btnStop.Enabled = false;
+            //btnToplamMReset.Enabled = false;
+            //btnKasaNReset.Enabled = false;
             _kalanToplamMiktar = 0;
         }
 
@@ -117,10 +123,10 @@ namespace StoklamaBandi
                     modbusManager.WriteSingleWord(_istDegerMem, Convert.ToInt32(txtIstenilenAdet.Text));
                 }
 
-                //if (txtToplamMiktar.Text != "")
-                //{
-                //    modbusManager.WriteSingleWord(_istToplamDegerMem, Convert.ToInt32(txtToplamMiktar.Text));
-                //}
+                if (txtToplamMiktar.Text != "")
+                {
+                    modbusManager.WriteSingleWord(_istToplamDegerMem, Convert.ToInt32(txtToplamMiktar.Text));
+                }
 
                 //******************PLC ye yazma işlemleri************************
                 modbusManager.WriteCoilRegister(_startMem, startStopBit);
@@ -131,7 +137,7 @@ namespace StoklamaBandi
 
                 StateSystemRun();
 
-                //Yazdırma işlemi
+                //**************Yazdırma işlemi ve piston kontrolü*******************************
                 if (txtIstenilenAdet.Text != "")
                 {
                     if (Convert.ToInt32(txtIstenilenAdet.Text) == mwSayilan[0] && printFlag == false && startStopBit)
@@ -142,6 +148,27 @@ namespace StoklamaBandi
                         
                         RunPrint();
 
+                        if (_kalanToplamMiktar == 0)
+                        {
+                            startStopBit = false;
+                            btnSave.Enabled = true;
+                            btnUpdate.Enabled = true;
+                            btnDelete.Enabled = true;
+                            btnKasaIciMReset.Enabled = true;
+                            btnResetPiston.Enabled = true;
+
+                            //btnKasaNReset.Enabled = true;
+                            //btnToplamMReset.Enabled = true;
+                        }
+                    }
+                   
+                    if (Convert.ToInt32(txtIstenilenAdet.Text) < mwSayilan[0] || Convert.ToInt32(txtIstenilenAdet.Text) > mwSayilan[0])
+                    {
+                        printFlag = false;
+                    }
+
+                    if (Convert.ToInt32(txtIstenilenAdet.Text) + 1 == mwSayilan[0])
+                    {
                         if (!flagPiston)
                         {
                             flagPiston = true;
@@ -152,18 +179,14 @@ namespace StoklamaBandi
                             flagPiston = false;
                         }
 
-                        modbusManager.WriteSingleWord(_sayilanKasaIciDegerMem, 0);
+                        modbusManager.WriteSingleWord(_sayilanKasaIciDegerMem, 1);
 
                         if (_kalanToplamMiktar < Convert.ToInt32(txtIstenilenAdet.Text) && _kalanToplamMiktar > 0)
                         {
                             txtIstenilenAdet.Text = Convert.ToString(_kalanToplamMiktar);
+
                         }
 
-                    }
-                   
-                    if (Convert.ToInt32(txtIstenilenAdet.Text) < mwSayilan[0] || Convert.ToInt32(txtIstenilenAdet.Text) > mwSayilan[0])
-                    {
-                        printFlag = false;
                     }
 
                 }
@@ -214,7 +237,6 @@ namespace StoklamaBandi
                     Miktar = adet,
                     Barkod = barcode
                 });
-
                 printer.Print(modelList);
 
             }
@@ -273,8 +295,13 @@ namespace StoklamaBandi
                    // thCycle.Start();
                     ButtonLock();
                     btnResetPiston.Enabled = true;
-                    btnKasaİciMReset.Enabled = true;
-
+                    btnKasaIciMReset.Enabled = true;
+                   // btnKasaNReset.Enabled = true;
+                   // btnToplamMReset.Enabled = true;
+                    btnStart.Enabled = true;
+                    btnStop.Enabled = true;
+                    txtToplamMiktar.Enabled = true;
+                    txtIstenilenAdet.Enabled = true;
                 }
 
             }
@@ -293,6 +320,13 @@ namespace StoklamaBandi
             TimerStop();
             ButtonUnlock();
             btnResetPiston.Enabled = false;
+            txtIstenilenAdet.Enabled = false;
+            txtToplamMiktar.Enabled = false;
+            btnStart.Enabled = false;
+            btnStop.Enabled = false;
+            //btnToplamMReset.Enabled = false;
+            //btnKasaNReset.Enabled = false;
+            btnKasaIciMReset.Enabled = false;
             //stateConnectComponent.StateIndex = 1;
         }
 
@@ -300,13 +334,25 @@ namespace StoklamaBandi
         {
             if (txtIstenilenAdet.Text != "" && txtToplamMiktar.Text != "")
             {
-                startStopBit = true;
-                btnSave.Enabled = false;
-                btnUpdate.Enabled = false;
-                btnDelete.Enabled = false;
-                btnKasaİciMReset.Enabled = false;
-                btnResetPiston.Enabled = false;
                 _kalanToplamMiktar = Convert.ToInt32(txtToplamMiktar.Text) - (mwSayilanKasaMiktarı[0] * Convert.ToInt32(txtIstenilenAdet.Text));
+                if (_kalanToplamMiktar > 0)
+                {
+                    startStopBit = true;
+                    btnSave.Enabled = false;
+                    btnUpdate.Enabled = false;
+                    btnDelete.Enabled = false;
+                    btnKasaIciMReset.Enabled = false;
+                    btnResetPiston.Enabled = false;
+                }
+
+                else
+                {
+                    MessageBox.Show("Lütfen Sayılan Adet Miktarlarını Resetleyiniz.");
+                }
+                
+               // btnKasaNReset.Enabled = false;
+                //btnToplamMReset.Enabled = false;
+                //_kalanToplamMiktar = Convert.ToInt32(txtToplamMiktar.Text) - (mwSayilanKasaMiktarı[0] * Convert.ToInt32(txtIstenilenAdet.Text));
             }
 
             else
@@ -321,18 +367,14 @@ namespace StoklamaBandi
             btnSave.Enabled = true;
             btnUpdate.Enabled = true;
             btnDelete.Enabled = true;
-            btnKasaİciMReset.Enabled = true;
+            btnKasaIciMReset.Enabled = true;
             btnResetPiston.Enabled = true;
+            //btnKasaNReset.Enabled = true;
+            //btnToplamMReset.Enabled = true;
             printFlag = false;
         }
 
-        private void BtnKasaMiktarReset_Click(object sender, EventArgs e)
-        {
 
-            resetFlag = true;
-
-
-        }
 
         private void BtnResetPiston_Click(object sender, EventArgs e)
         {
@@ -495,6 +537,13 @@ namespace StoklamaBandi
 
             this.Close();
         }
+        private void BtnKasaMiktarReset_Click(object sender, EventArgs e)
+        {
+            resetFlag = true;
+            flagResetKasaMik = true;
+            flagResetToplamMik = true;
+            _kalanToplamMiktar = 0;
+        }
 
         private void btnToplamMReset_Click(object sender, EventArgs e)
         {
@@ -538,8 +587,10 @@ namespace StoklamaBandi
 
         private void TxtNumber_Click(object sender, EventArgs e)
         {
+            
             DevExpress.XtraEditors.TextEdit otextBox = (DevExpress.XtraEditors.TextEdit)sender;
             otextBox.Text = ShowNumberKeybord(otextBox.Text);
+
         }
         #endregion
 

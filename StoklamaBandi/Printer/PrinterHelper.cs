@@ -16,7 +16,7 @@ namespace StoklamaBandi.Printer
 
         public PrinterHelper()
         {
-            
+
         }
         public PrintModel GetDatasource(string malzemekodu, string malzemeadi, int miktar, string barcode)
         {
@@ -38,13 +38,17 @@ namespace StoklamaBandi.Printer
 
         public void Print(List<PrintModel> model)
         {
-            using (XtraReport report = new XtraReport())          
+            using (XtraReport report = new XtraReport())
             {
                 printTool = new ReportPrintTool(report);
                 report.DataSource = model;
                 report.LoadLayout(layoutPath);
                 report.ShowPrintMarginsWarning = false;
                 //report.Print(printerName);
+                report.ShowPrintMarginsWarning = false;
+                report.ShowPreviewMarginLines = false;
+                report.ShowPrintStatusDialog = false;
+
                 printTool.Print(printerName);
             }
 
